@@ -1,0 +1,1683 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cirrus CI is a modern Continuous Integration system built for the era of cloud computing. Cirrus CI supports Linux, Windows, macOS and FreeBSD environments as well as various cloud computing services like Kubernetes, Google Cloud, AWS and Azure.
+">
+      
+      
+      
+        <meta name="author" content="Cirrus Labs">
+      
+      
+        <link rel="canonical" href="https://cirrus-ci.org/guide/programming-tasks/">
+      
+      
+        
+      
+      <link rel="icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.4+insiders-2.7.2">
+    
+    
+      
+        <title>Programming Tasks in Starlark - Cirrus CI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.48946aae.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.77b964be.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/landing.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <script>function __scope(t,e="../.."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-into-starlark" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cirrus CI" class="md-header__button md-logo" aria-label="Cirrus CI" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cirrus CI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Programming Tasks in Starlark
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/cirruslabs/cirrus-ci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../features/" class="md-tabs__link">
+      Features
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link md-tabs__link--active">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../examples/" class="md-tabs__link">
+      Examples
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../pricing/" class="md-tabs__link">
+      Pricing
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../support/" class="md-tabs__link">
+      Support
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://medium.com/cirruslabs" class="md-tabs__link">
+      Blog
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://cirrus-ci.com/" class="md-tabs__link">
+      Go to App
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cirrus CI" class="md-nav__button md-logo" aria-label="Cirrus CI" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Cirrus CI
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/cirruslabs/cirrus-ci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          User Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-tasks/" class="md-nav__link">
+        Writing Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Programming Tasks in Starlark
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Programming Tasks in Starlark
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-into-starlark" class="md-nav__link">
+    Introduction into Starlark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-starlark-scripts" class="md-nav__link">
+    Writing Starlark scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Starlark scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entrypoints" class="md-nav__link">
+    Entrypoints
+  </a>
+  
+    <nav class="md-nav" aria-label="Entrypoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hooks" class="md-nav__link">
+    Hooks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-loading" class="md-nav__link">
+    Module loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Module loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local" class="md-nav__link">
+    Local
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-from-git" class="md-nav__link">
+    Remote from Git
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#builtins" class="md-nav__link">
+    Builtins
+  </a>
+  
+    <nav class="md-nav" aria-label="Builtins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fs" class="md-nav__link">
+    fs
+  </a>
+  
+    <nav class="md-nav" aria-label="fs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fsexistspath" class="md-nav__link">
+    fs.exists(path)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fsreadpath" class="md-nav__link">
+    fs.read(path)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fsreaddirdirpath" class="md-nav__link">
+    fs.readdir(dirpath)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_test" class="md-nav__link">
+    is_test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    env
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes_include" class="md-nav__link">
+    changes_include
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    http
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base64" class="md-nav__link">
+    base64
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml" class="md-nav__link">
+    yaml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#re" class="md-nav__link">
+    re
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zipfile" class="md-nav__link">
+    zipfile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips-and-tricks/" class="md-nav__link">
+        Configuration Tips and Tricks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_5" type="checkbox" id="__nav_3_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_5">
+          Execution Environment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Execution Environment" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Execution Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        Linux Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/" class="md-nav__link">
+        Windows Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macOS/" class="md-nav__link">
+        macOS VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FreeBSD/" class="md-nav__link">
+        FreeBSD VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../persistent-workers/" class="md-nav__link">
+        Persistent Workers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-builder-vm/" class="md-nav__link">
+        Docker Builder on VM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-builds-on-kubernetes/" class="md-nav__link">
+        Docker Builds on GKE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-pipe/" class="md-nav__link">
+        Docker Pipe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-vms/" class="md-nav__link">
+        Custom VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supported-computing-services/" class="md-nav__link">
+        Computing Services
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-life/" class="md-nav__link">
+        Life of a Build
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notifications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Legal
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Legal" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Legal
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/privacy/" class="md-nav__link">
+        Privacy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/terms/" class="md-nav__link">
+        Terms of Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pricing/" class="md-nav__link">
+        Pricing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://medium.com/cirruslabs" class="md-nav__link">
+        Blog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://cirrus-ci.com/" class="md-nav__link">
+        Go to App
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-into-starlark" class="md-nav__link">
+    Introduction into Starlark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-starlark-scripts" class="md-nav__link">
+    Writing Starlark scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Starlark scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entrypoints" class="md-nav__link">
+    Entrypoints
+  </a>
+  
+    <nav class="md-nav" aria-label="Entrypoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hooks" class="md-nav__link">
+    Hooks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-loading" class="md-nav__link">
+    Module loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Module loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local" class="md-nav__link">
+    Local
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-from-git" class="md-nav__link">
+    Remote from Git
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#builtins" class="md-nav__link">
+    Builtins
+  </a>
+  
+    <nav class="md-nav" aria-label="Builtins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fs" class="md-nav__link">
+    fs
+  </a>
+  
+    <nav class="md-nav" aria-label="fs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fsexistspath" class="md-nav__link">
+    fs.exists(path)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fsreadpath" class="md-nav__link">
+    fs.read(path)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fsreaddirdirpath" class="md-nav__link">
+    fs.readdir(dirpath)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_test" class="md-nav__link">
+    is_test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    env
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes_include" class="md-nav__link">
+    changes_include
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    http
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base64" class="md-nav__link">
+    base64
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml" class="md-nav__link">
+    yaml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#re" class="md-nav__link">
+    re
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zipfile" class="md-nav__link">
+    zipfile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/guide/programming-tasks.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Programming Tasks in Starlark</h1>
+                
+                <h2 id="introduction-into-starlark">Introduction into Starlark<a class="headerlink" href="#introduction-into-starlark" title="Permanent link">&para;</a></h2>
+<p>Most commonly, Cirrus tasks are declared in <code>.cirrus.yml</code> file in YAML format as documented in <a href="../writing-tasks/"><em>Writing Tasks</em></a> guide.</p>
+<p>YAML, as a language, is great for declaring simple to moderate configurations, but sometimes just using a declarative language is not enough.
+One might need some conditional execution or have an easy way to generate multiple similar tasks. Most of the CIs solve this problem
+by introducing special DSL into the existing YAML. In case of Cirrus CI, we have <a href="../writing-tasks/#conditional-task-execution"><code>only_if</code> keyword</a>
+for conditional execution and <a href="../writing-tasks/#matrix-modification"><code>matrix</code> modification</a> for generating similar tasks.
+These options are mostly hacks to workaround declarative nature of YAML language where in reality an imperative language
+looks like a better fit. This is why Cirrus CI allows in additional to YAML configure tasks via Starlark.</p>
+<p>Starlark language is a procedural programming language <a href="https://docs.bazel.build/versions/master/skylark/language.html">originated from Bazel build tool</a>,
+but ideal for embedding within any other system that want to safely allow user-defined logic. There are a few key differences which made us
+choose Starlark instead of common alternatives like JavaScript/TypeScript or WebAssembly:</p>
+<ol>
+<li>Starlark doesn't require compilation. No need to introduce full-blown compile and deploy process for a few dozen lines of logic.</li>
+<li>Starlark script can be executed instantly on any platform. There is Starlark interpreter written in Go which integrates nicely with Cirrus CLI and Cirrus CI infrastructure.</li>
+<li>Starlark has built-in functionality for loading external modules which is ideal for config sharing. See <a href="#module-loading">module loading</a> for details.</li>
+</ol>
+<h2 id="writing-starlark-scripts">Writing Starlark scripts<a class="headerlink" href="#writing-starlark-scripts" title="Permanent link">&para;</a></h2>
+<p>Let's start with a trivial <code>.cirrus.star</code> example like this:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;container&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;debian:latest&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;script&quot;</span><span class="p">:</span> <span class="s2">&quot;make&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">]</span>
+</code></pre></div>
+<p>With the <a href="#module-loading">module loading</a>, you can re-use other people's code to avoid wasting time on things written from scratch.
+For example, with the official <a href="https://github.com/cirrus-modules/helpers">task helpers</a> the example above can be refactored in:</p>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;github.com/cirrus-modules/helpers&quot;</span><span class="p">,</span> <span class="s2">&quot;task&quot;</span><span class="p">,</span> <span class="s2">&quot;container&quot;</span><span class="p">,</span> <span class="s2">&quot;script&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">[</span>
+    <span class="n">task</span><span class="p">(</span>
+      <span class="n">instance</span><span class="o">=</span><span class="n">container</span><span class="p">(</span><span class="s2">&quot;debian:latest&quot;</span><span class="p">),</span>
+      <span class="n">instructions</span><span class="o">=</span><span class="p">[</span><span class="n">script</span><span class="p">(</span><span class="s2">&quot;make&quot;</span><span class="p">)]</span>
+    <span class="p">),</span>
+  <span class="p">]</span>
+</code></pre></div>
+<p><code>main()</code> simply returns a list of task objects which will be serialized into YAML presentation like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+    <span class="nt">container</span><span class="p">:</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">debian:latest</span>
+    <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">make</span>
+</code></pre></div>
+<p>Then the generated YAML is appended to <code>.cirrus.yml</code> (if any) before passing the combined config into the final YAML parser.</p>
+<p>With Starlark, it's possible to generate parts of the configuration dynamically based on some external conditions:</p>
+<ul>
+<li><a href="#fs">Parsing files inside the repository</a> to pick up some common settings (for example, parse <code>package.json</code> to see if it contains <code>lint</code> script and generate a linting task).</li>
+<li><a href="#http">Making an HTTP request</a> to check the previous build status.</li>
+</ul>
+<p>See a video tutorial on how to create a custom Cirrus module:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fPEe-xocfxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="entrypoints">Entrypoints<a class="headerlink" href="#entrypoints" title="Permanent link">&para;</a></h3>
+<p>Different events will trigger execution of different top-level functions in the <code>.cirrus.star</code>. These functions reserve certain names
+and will be called with different arguments depending on the event which triggered the execution.</p>
+<h4 id="main"><code>main()</code><a class="headerlink" href="#main" title="Permanent link">&para;</a></h4>
+<p><code>main()</code> is called once a Cirrus CI build is triggered in order to generate a list of tasks to execute within that particular build:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;container&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;debian:latest&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;script&quot;</span><span class="p">:</span> <span class="s2">&quot;make test&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;container&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;debian:latest&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;script&quot;</span><span class="p">:</span> <span class="s2">&quot;make build&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+</code></pre></div>
+<p>You can also return a dictionary that fully resembles a YAML configuration, just make sure to give the tasks different names, because Starlark does not permit duplicate dictionary keys:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;container&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;debian:latest&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;test_task&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;script&quot;</span><span class="p">:</span> <span class="s2">&quot;make test&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;build_task&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;script&quot;</span><span class="p">:</span> <span class="s2">&quot;make build&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Returning a dictionary like this is useful when you want to have a top-level overrides, just note that when using both YAML and Starlark configuration formats they get merged and the YAML configuration always comes first.</p>
+<h4 id="hooks">Hooks<a class="headerlink" href="#hooks" title="Permanent link">&para;</a></h4>
+<p>It's also possible to execute Starlark scripts on updates to the current build or any of the tasks within the build.
+Think of it as <a href="../../api/#webhooks">WebHooks</a> running within Cirrus that doesn't require any infrastructure on your end.</p>
+<p>Expected names of Starlark Hook functions in <code>.cirrus.star</code> are <code>on_build_&lt;STATUS&gt;</code> or <code>on_task_&lt;STATUS&gt;</code> respectively.
+Please refer to <a href="https://github.com/cirruslabs/cirrus-ci-web/blob/master/schema.graphql">Cirrus CI GraphQL Schema</a> for a
+full list of existing statuses, but most commonly  <code>on_build_failed</code>/<code>on_build_completed</code> and <code>on_task_failed</code>/<code>on_task_completed</code>
+are used. These functions should expect a single context argument passed by Cirrus Cloud. At the moment hook's context only contains
+a single field <code>payload</code> containing the <a href="../../api/#webhooks">same payload as a webhook</a>. </p>
+<p>One caveat of Starlark Hooks execution is <code>CIRRUS_TOKEN</code> <a href="#env">environment variable</a> that contains a token to access <a href="../../api/">Cirrus API</a>.
+Scope of <code>CIRRUS_TOKEN</code> is restricted to the build associated with that particular hook invocation and allows, for example,
+to automatically re-run tasks. Here is an example of a Starlark Hook that automatically re-runs a failed task in case a particular
+transient issue found in logs:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># load some helpers from an external module </span>
+<span class="n">load</span><span class="p">(</span><span class="s2">&quot;github.com/cirrus-modules/graphql&quot;</span><span class="p">,</span> <span class="s2">&quot;rerun_task_if_issue_in_logs&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">on_task_failed</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="s2">&quot;Test&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ctx</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+    <span class="k">return</span>
+  <span class="k">if</span> <span class="n">ctx</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">automaticReRun</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Task is already an automatic re-run! Won&#39;t even try to re-run it...&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="n">rerun_task_if_issue_in_logs</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;Time out&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="module-loading">Module loading<a class="headerlink" href="#module-loading" title="Permanent link">&para;</a></h3>
+<p>Module loading is done through the Starlark's <a href="https://github.com/bazelbuild/starlark/blob/master/spec.md#load-statements"><code>load()</code></a> statement.</p>
+<p>Besides the ability to load <a href="#builtins">builtins</a> with it, Cirrus can load other <code>.star</code> files from local and remote locations to facilitate code re-use.</p>
+<h4 id="local">Local<a class="headerlink" href="#local" title="Permanent link">&para;</a></h4>
+<p>Local loads are relative to the project's root (where <code>.cirrus.star</code> is located):</p>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;.ci/notify-slack.star&quot;</span><span class="p">,</span> <span class="s2">&quot;notify_slack&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="remote-from-git">Remote from Git<a class="headerlink" href="#remote-from-git" title="Permanent link">&para;</a></h4>
+<p>To load the default branch of the module from GitHub:</p>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;github.com/cirrus-modules/golang&quot;</span><span class="p">,</span> <span class="s2">&quot;task&quot;</span><span class="p">,</span> <span class="s2">&quot;container&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>In the example above, the name of the <code>.star</code> file was not provided, because <code>lib.star</code> is assumed by default. This is equivalent to:</p>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;github.com/cirrus-modules/golang/lib.star@main&quot;</span><span class="p">,</span> <span class="s2">&quot;task&quot;</span><span class="p">,</span> <span class="s2">&quot;container&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>You can also specify an exact commit hash instead of the <code>main()</code> branch name to prevent accidental changes.</p>
+<p>To load <code>.star</code> files from repositories other than GitHub, add a <code>.git</code> suffix at the end of the repository name, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;gitlab.com/fictional/repository.git/validator.star&quot;</span><span class="p">,</span> <span class="s2">&quot;validate&quot;</span><span class="p">)</span>
+                                     <span class="o">^^^^</span> <span class="n">note</span> <span class="n">the</span> <span class="n">suffix</span>
+</code></pre></div>
+<h2 id="builtins">Builtins<a class="headerlink" href="#builtins" title="Permanent link">&para;</a></h2>
+<p>Cirrus CLI provides builtins all nested in the <code>cirrus</code> module that greatly extend what can be done with the Starlark alone.</p>
+<h3 id="fs"><code>fs</code><a class="headerlink" href="#fs" title="Permanent link">&para;</a></h3>
+<p>These builtins allow for read-only filesystem access.</p>
+<p>All paths are relative to the project's directory.</p>
+<h4 id="fsexistspath"><code>fs.exists(path)</code><a class="headerlink" href="#fsexistspath" title="Permanent link">&para;</a></h4>
+<p>Returns <code>True</code> if <code>path</code> exists and <code>False</code> otherwise.</p>
+<h4 id="fsreadpath"><code>fs.read(path)</code><a class="headerlink" href="#fsreadpath" title="Permanent link">&para;</a></h4>
+<p>Returns a <a href="https://github.com/bazelbuild/starlark/blob/master/spec.md#strings"><code>string</code></a> with the file contents or <code>None</code> if the file doesn't exist.</p>
+<p>Note that this is an error to read a directory with <code>fs.read()</code>.</p>
+<h4 id="fsreaddirdirpath"><code>fs.readdir(dirpath)</code><a class="headerlink" href="#fsreaddirdirpath" title="Permanent link">&para;</a></h4>
+<p>Returns a <a href="https://github.com/bazelbuild/starlark/blob/master/spec.md#lists"><code>list</code></a> of <a href="https://github.com/bazelbuild/starlark/blob/master/spec.md#strings"><code>string</code>'s</a> with names of the entries in the directory.</p>
+<p>Note that this is an error to read a file with <code>fs.readdir()</code>.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;cirrus&quot;</span><span class="p">,</span> <span class="s2">&quot;fs&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="n">base_tasks</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">fs</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;go.mod&quot;</span><span class="p">):</span>
+        <span class="n">tasks</span> <span class="o">+=</span> <span class="n">go_tasks</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">tasks</span>
+</code></pre></div>
+<h3 id="is_test"><code>is_test</code><a class="headerlink" href="#is_test" title="Permanent link">&para;</a></h3>
+<p>While not technically a builtin, <code>is_test</code> is a <a href="https://github.com/bazelbuild/starlark/blob/master/spec.md#booleans"><code>bool</code></a>
+that allows Starlark code to determine whether it's running in test environment via Cirrus CLI. This can be useful for limiting the test complexity,
+e.g. by not making a real HTTP request and mocking/skipping it instead. Read more about module testing in a <a href="https://github.com/cirruslabs/cirrus-cli/blob/master/STARLARK-TEMPLATING.md#testing">separate guide in Cirrus CLI repository</a>.</p>
+<h3 id="env"><code>env</code><a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
+<p>While not technically a builtin, <code>env</code> is dict that contains <a href="../writing-tasks/#environment-variables">environment variables</a>.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;cirrus&quot;</span><span class="p">,</span> <span class="s2">&quot;env&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="n">base_tasks</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIRRUS_TAG&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">tasks</span> <span class="o">+=</span> <span class="n">release_tasks</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">tasks</span>
+</code></pre></div>
+<h3 id="changes_include"><code>changes_include</code><a class="headerlink" href="#changes_include" title="Permanent link">&para;</a></h3>
+<p><code>changes_include()</code> is a Starlark alternative to the <a href="../writing-tasks/#supported-functions">changesInclude()</a> function commonly found in the YAML configuration files.</p>
+<p>It takes at least one <a href="https://github.com/bazelbuild/starlark/blob/master/spec.md#strings"><code>string</code></a> with a pattern and returns a <a href="https://github.com/bazelbuild/starlark/blob/master/spec.md#booleans"><code>bool</code></a> that represents whether any of the specified patterns matched any of the affected files in the running context.</p>
+<p>Currently supported contexts:</p>
+<ul>
+<li><a href="#build-generation"><code>main()</code> entrypoint</a></li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;cirrus&quot;</span><span class="p">,</span> <span class="s2">&quot;changes_include&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="n">base_tasks</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">changes_include</span><span class="p">(</span><span class="s2">&quot;Dockerfile&quot;</span><span class="p">):</span>
+        <span class="n">tasks</span> <span class="o">+=</span> <span class="n">docker_task</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">tasks</span>
+</code></pre></div>
+<h3 id="http"><code>http</code><a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
+<p>Provides HTTP client implementation with <code>http.get()</code>, <code>http.post()</code> and other HTTP method functions.</p>
+<p>Refer to the <a href="https://github.com/qri-io/starlib/tree/master/http">starlib's documentation</a> for more details.</p>
+<h3 id="hash"><code>hash</code><a class="headerlink" href="#hash" title="Permanent link">&para;</a></h3>
+<p>Provides cryptographic hashing functions, such as <code>hash.md5()</code>, <code>hash.sha1()</code> and <code>hash.sha256()</code>.</p>
+<p>Refer to the <a href="https://github.com/qri-io/starlib/tree/master/hash">starlib's documentation</a> for more details.</p>
+<h3 id="base64"><code>base64</code><a class="headerlink" href="#base64" title="Permanent link">&para;</a></h3>
+<p>Provides Base64 encoding and decoding functions using <code>base64.encode()</code> and <code>base64.decode()</code>.</p>
+<p>Refer to the <a href="https://github.com/qri-io/starlib/tree/master/encoding/base64">starlib's documentation</a> for more details.</p>
+<h3 id="json"><code>json</code><a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<p>Provides JSON document marshalling and unmarshalling using <code>json.dumps()</code> and <code>json.loads()</code> functions.</p>
+<p>Refer to the <a href="https://github.com/qri-io/starlib/tree/master/encoding/json">starlib's documentation</a> for more details.</p>
+<h3 id="yaml"><code>yaml</code><a class="headerlink" href="#yaml" title="Permanent link">&para;</a></h3>
+<p>Provides YAML document marshalling and unmarshalling using <code>yaml.dumps()</code> and <code>yaml.loads()</code> functions.</p>
+<p>Refer to the <a href="https://github.com/qri-io/starlib/tree/master/encoding/yaml">starlib's documentation</a> for more details.</p>
+<h3 id="re"><code>re</code><a class="headerlink" href="#re" title="Permanent link">&para;</a></h3>
+<p>Provides regular expression functions, such as <code>findall()</code>, <code>split()</code> and <code>sub()</code>.</p>
+<p>Refer to the <a href="https://github.com/qri-io/starlib/tree/master/re">starlib's documentation</a> for more details.</p>
+<h3 id="zipfile"><code>zipfile</code><a class="headerlink" href="#zipfile" title="Permanent link">&para;</a></h3>
+<p><code>cirrus.zipfile</code> module provides methods to read Zip archives.</p>
+<p>You instantiate a <code>ZipFile</code> object using <code>zipfile.ZipFile(data)</code> function call and then call <code>namelist()</code> and <code>open(filename)</code> methods to retrieve information about archive contents.</p>
+<p>Refer to the <a href="https://github.com/qri-io/starlib/tree/master/zipfile">starlib's documentation</a> for more details.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;cirrus&quot;</span><span class="p">,</span> <span class="s2">&quot;fs&quot;</span><span class="p">,</span> <span class="s2">&quot;zipfile&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_java_archive</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="c1"># Read Zip archive contents from the filesystem</span>
+    <span class="n">archive_contents</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">archive_contents</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># Open Zip archive and a file inside of it</span>
+    <span class="n">zf</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">archive_contents</span><span class="p">)</span>
+    <span class="n">manifest</span> <span class="o">=</span> <span class="n">zf</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;META-INF/MANIFEST.MF&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Does the manifest contain the expected version?</span>
+    <span class="k">if</span> <span class="s2">&quot;Manifest-Version: 1.0&quot;</span> <span class="ow">in</span> <span class="n">manifest</span><span class="o">.</span><span class="n">read</span><span class="p">():</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" title="Back to top" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../writing-tasks/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Writing Tasks
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../tips-and-tricks/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Configuration Tips and Tricks
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            © Cirrus Labs 2017-present
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs Insiders
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/cirrus_labs" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.4c32c4e3.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c46528a6.min.js"></script>
+      
+    
+  </body>
+</html>

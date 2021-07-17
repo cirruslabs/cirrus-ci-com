@@ -1,0 +1,2566 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cirrus CI is a modern Continuous Integration system built for the era of cloud computing. Cirrus CI supports Linux, Windows, macOS and FreeBSD environments as well as various cloud computing services like Kubernetes, Google Cloud, AWS and Azure.
+">
+      
+      
+      
+        <meta name="author" content="Cirrus Labs">
+      
+      
+        <link rel="canonical" href="https://cirrus-ci.org/guide/writing-tasks/">
+      
+      
+        
+      
+      <link rel="icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.4+insiders-2.7.2">
+    
+    
+      
+        <title>Writing Tasks - Cirrus CI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.48946aae.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.77b964be.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/landing.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <script>function __scope(t,e="../.."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#execution-environment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cirrus CI" class="md-header__button md-logo" aria-label="Cirrus CI" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cirrus CI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Writing Tasks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/cirruslabs/cirrus-ci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../features/" class="md-tabs__link">
+      Features
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link md-tabs__link--active">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../examples/" class="md-tabs__link">
+      Examples
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../pricing/" class="md-tabs__link">
+      Pricing
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../support/" class="md-tabs__link">
+      Support
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://medium.com/cirruslabs" class="md-tabs__link">
+      Blog
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://cirrus-ci.com/" class="md-tabs__link">
+      Go to App
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cirrus CI" class="md-nav__button md-logo" aria-label="Cirrus CI" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Cirrus CI
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/cirruslabs/cirrus-ci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          User Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Writing Tasks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Writing Tasks
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#execution-environment" class="md-nav__link">
+    Execution Environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-instructions" class="md-nav__link">
+    Supported Instructions
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-instruction" class="md-nav__link">
+    Script Instruction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#background-script-instruction" class="md-nav__link">
+    Background Script Instruction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-instruction" class="md-nav__link">
+    Cache Instruction
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache Instruction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-cache-upload" class="md-nav__link">
+    Manual cache upload
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifacts-instruction" class="md-nav__link">
+    Artifacts Instruction
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifacts Instruction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latest-build-artifacts" class="md-nav__link">
+    Latest build artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-build-artifacts" class="md-nav__link">
+    Current build artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-type" class="md-nav__link">
+    Artifact Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-parsing" class="md-nav__link">
+    Artifact Parsing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-instruction" class="md-nav__link">
+    File Instruction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-behavior-of-instructions" class="md-nav__link">
+    Execution Behavior of Instructions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#behavioral-environment-variables" class="md-nav__link">
+    Behavioral Environment Variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encrypted-variables" class="md-nav__link">
+    Encrypted Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cron-builds" class="md-nav__link">
+    Cron Builds
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-modification" class="md-nav__link">
+    Matrix Modification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-execution-dependencies" class="md-nav__link">
+    Task Execution Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-task-execution" class="md-nav__link">
+    Conditional Task Execution
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditional Task Execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-operators" class="md-nav__link">
+    Supported Operators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-functions" class="md-nav__link">
+    Supported Functions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-cancellation-of-tasks" class="md-nav__link">
+    Auto-Cancellation of Tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stateful-tasks" class="md-nav__link">
+    Stateful Tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-toleration" class="md-nav__link">
+    Failure Toleration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-tasks" class="md-nav__link">
+    Manual tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-execution-lock" class="md-nav__link">
+    Task Execution Lock
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-pr-labels" class="md-nav__link">
+    Required PR Labels
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-cache" class="md-nav__link">
+    HTTP Cache
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-containers" class="md-nav__link">
+    Additional Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-badges" class="md-nav__link">
+    Embedded Badges
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedded Badges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#badges-in-markdown" class="md-nav__link">
+    Badges in Markdown
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cctray-xml" class="md-nav__link">
+    CCTray XML
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../programming-tasks/" class="md-nav__link">
+        Programming Tasks in Starlark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips-and-tricks/" class="md-nav__link">
+        Configuration Tips and Tricks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_5" type="checkbox" id="__nav_3_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_5">
+          Execution Environment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Execution Environment" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Execution Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        Linux Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/" class="md-nav__link">
+        Windows Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macOS/" class="md-nav__link">
+        macOS VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FreeBSD/" class="md-nav__link">
+        FreeBSD VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../persistent-workers/" class="md-nav__link">
+        Persistent Workers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-builder-vm/" class="md-nav__link">
+        Docker Builder on VM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-builds-on-kubernetes/" class="md-nav__link">
+        Docker Builds on GKE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-pipe/" class="md-nav__link">
+        Docker Pipe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-vms/" class="md-nav__link">
+        Custom VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supported-computing-services/" class="md-nav__link">
+        Computing Services
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-life/" class="md-nav__link">
+        Life of a Build
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notifications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Legal
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Legal" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Legal
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/privacy/" class="md-nav__link">
+        Privacy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/terms/" class="md-nav__link">
+        Terms of Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pricing/" class="md-nav__link">
+        Pricing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://medium.com/cirruslabs" class="md-nav__link">
+        Blog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://cirrus-ci.com/" class="md-nav__link">
+        Go to App
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#execution-environment" class="md-nav__link">
+    Execution Environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-instructions" class="md-nav__link">
+    Supported Instructions
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-instruction" class="md-nav__link">
+    Script Instruction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#background-script-instruction" class="md-nav__link">
+    Background Script Instruction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-instruction" class="md-nav__link">
+    Cache Instruction
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache Instruction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-cache-upload" class="md-nav__link">
+    Manual cache upload
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifacts-instruction" class="md-nav__link">
+    Artifacts Instruction
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifacts Instruction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latest-build-artifacts" class="md-nav__link">
+    Latest build artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-build-artifacts" class="md-nav__link">
+    Current build artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-type" class="md-nav__link">
+    Artifact Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-parsing" class="md-nav__link">
+    Artifact Parsing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-instruction" class="md-nav__link">
+    File Instruction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-behavior-of-instructions" class="md-nav__link">
+    Execution Behavior of Instructions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#behavioral-environment-variables" class="md-nav__link">
+    Behavioral Environment Variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encrypted-variables" class="md-nav__link">
+    Encrypted Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cron-builds" class="md-nav__link">
+    Cron Builds
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-modification" class="md-nav__link">
+    Matrix Modification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-execution-dependencies" class="md-nav__link">
+    Task Execution Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-task-execution" class="md-nav__link">
+    Conditional Task Execution
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditional Task Execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-operators" class="md-nav__link">
+    Supported Operators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-functions" class="md-nav__link">
+    Supported Functions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-cancellation-of-tasks" class="md-nav__link">
+    Auto-Cancellation of Tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stateful-tasks" class="md-nav__link">
+    Stateful Tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-toleration" class="md-nav__link">
+    Failure Toleration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-tasks" class="md-nav__link">
+    Manual tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-execution-lock" class="md-nav__link">
+    Task Execution Lock
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-pr-labels" class="md-nav__link">
+    Required PR Labels
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-cache" class="md-nav__link">
+    HTTP Cache
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-containers" class="md-nav__link">
+    Additional Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-badges" class="md-nav__link">
+    Embedded Badges
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedded Badges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#badges-in-markdown" class="md-nav__link">
+    Badges in Markdown
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cctray-xml" class="md-nav__link">
+    CCTray XML
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/guide/writing-tasks.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Writing Tasks</h1>
+                
+                <p>A <code>task</code> defines a sequence of <a href="#supported-instructions">instructions</a> to execute and an <a href="#execution-environment">execution environment</a>
+to execute these instructions in. Let's see a line-by-line example of a <code>.cirrus.yml</code> configuration file first:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gradle:jdk11</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gradle test</span>
+</code></pre></div>
+<p>The example above defines a single task that will be scheduled and executed on the <a href="../linux/">Linux Community Cluster</a> using the <code>gradle:jdk11</code> Docker image.
+Only one user-defined <a href="#script-instruction">script instruction</a> to run <code>gradle test</code> will be executed. Not that complex, right?</p>
+<p>Please read the topics below if you want better understand what's doing on in a more complex <code>.cirrus.yml</code> configuration file, such as this:</p>
+<div class="annotate highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span> <span class="c1"># (1)</span>
+
+  <span class="nt">node_modules_cache</span><span class="p">:</span> <span class="c1"># (2)</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat yarn.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn install</span>
+
+  <span class="nt">matrix</span><span class="p">:</span> <span class="c1"># (3)</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Lint</span>
+      <span class="nt">skip</span><span class="p">:</span> <span class="kt">!changesInclude(&#39;.cirrus.yml&#39;,</span> <span class="s">&#39;**.{js,ts}&#39;</span><span class="l l-Scalar l-Scalar-Plain">)</span> <span class="c1"># (4)</span>
+      <span class="nt">lint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run lint</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test</span>
+      <span class="nt">container</span><span class="p">:</span>
+        <span class="nt">matrix</span><span class="p">:</span> <span class="c1"># (5)</span>
+          <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+          <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:lts</span>
+      <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Publish</span>
+      <span class="nt">depends_on</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Lint</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Test</span>
+      <span class="nt">only_if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$BRANCH == &quot;master&quot;</span> <span class="c1"># (6)</span>
+      <span class="nt">publish_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run publish</span>
+</code></pre></div>
+<ol>
+<li>Use any Docker image from public or <a href="../linux/#working-with-private-registries">private</a> registries</li>
+<li>Use <a href="#cache-instruction">cache instruction</a> to persist folders based on an arbitrary <code>fingerprint_script</code>.</li>
+<li>Use <a href="#matrix-modification"><code>matrix</code> modification</a> to produce many similar tasks.</li>
+<li>See what kind of files were changes and skip tasks that are not applicable.
+   See <a href="#supported-functions"><code>changesInclude</code></a> documentation for details.</li>
+<li>Use nested <a href="#matrix-modification"><code>matrix</code> modification</a> to produce even more tasks.</li>
+<li>Completely exclude tasks from execution graph by <a href="#conditional-task-execution">any custom condition</a>.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Task Naming</p>
+<p>To name a task one can use the <code>name</code> field. <code>foo_task</code> syntax is a syntactic sugar. Separate name
+field is very useful when you want to have a rich task name:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Tests (macOS)</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p><strong>Note:</strong> instructions within a task can only be named via a prefix (e.g. <code>test_script</code>).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Visual Task Creation for Beginners</p>
+<p>If you are just getting started and prefer a more visual way of creating tasks, there
+is a third-party <a href="https://rdil.rocks/cirrus-builder">Cirrus CI Configuration Builder</a> for generating YAML config that might be helpful.</p>
+</div>
+<h2 id="execution-environment">Execution Environment<a class="headerlink" href="#execution-environment" title="Permanent link">&para;</a></h2>
+<p>In order to specify where to execute a particular task you can choose from a variety of options by defining one of the
+following fields for a <code>task</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Managed by</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>container</code></td>
+<td><strong>us</strong></td>
+<td><a href="../linux/">Linux Docker Container</a></td>
+</tr>
+<tr>
+<td><code>windows_container</code></td>
+<td><strong>us</strong></td>
+<td><a href="../windows/">Windows Docker Container</a></td>
+</tr>
+<tr>
+<td><code>docker_builder</code></td>
+<td><strong>us</strong></td>
+<td><a href="../docker-builder-vm/">Full-fledged VM pre-configured for running Docker</a></td>
+</tr>
+<tr>
+<td><code>macos_instance</code></td>
+<td><strong>us</strong></td>
+<td><a href="../macOS/">macOS Virtual Machines</a></td>
+</tr>
+<tr>
+<td><code>freebsd_instance</code></td>
+<td><strong>us</strong></td>
+<td><a href="../FreeBSD/">FreeBSD Virtual Machines</a></td>
+</tr>
+<tr>
+<td><code>compute_engine_instance</code></td>
+<td><strong>us</strong></td>
+<td><a href="../custom-vms/">Full-fledged custom VM</a></td>
+</tr>
+<tr>
+<td><code>persistent_worker</code></td>
+<td><strong>you</strong></td>
+<td><a href="../persistent-workers/">Use any host on any platform and architecture</a></td>
+</tr>
+<tr>
+<td><code>gce_instance</code></td>
+<td><strong>you</strong></td>
+<td><a href="../supported-computing-services/#compute-engine">Linux, Windows and FreeBSD Virtual Machines in your GCP project</a></td>
+</tr>
+<tr>
+<td><code>gke_container</code></td>
+<td><strong>you</strong></td>
+<td><a href="../supported-computing-services/#kubernetes-engine">Linux Docker Containers on private GKE cluster</a></td>
+</tr>
+<tr>
+<td><code>ec2_instance</code></td>
+<td><strong>you</strong></td>
+<td><a href="../supported-computing-services/#ec2">Linux Virtual Machines in your AWS</a></td>
+</tr>
+<tr>
+<td><code>eks_instance</code></td>
+<td><strong>you</strong></td>
+<td><a href="../supported-computing-services/#eks">Linux Docker Containers on private EKS cluster</a></td>
+</tr>
+<tr>
+<td><code>azure_container_instance</code></td>
+<td><strong>you</strong></td>
+<td><a href="../supported-computing-services/#azure-container-instances">Linux and Windows Docker Container on Azure</a></td>
+</tr>
+<tr>
+<td><code>oke_instance</code></td>
+<td><strong>you</strong></td>
+<td><a href="../supported-computing-services/#oracle-cloud">Linux x86 and Arm Containers on Oracle Cloud</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="supported-instructions">Supported Instructions<a class="headerlink" href="#supported-instructions" title="Permanent link">&para;</a></h2>
+<p>Each task is essentially a collection of instructions that are executed sequentially. The following instructions are supported:</p>
+<ul>
+<li><a href="#script-instruction"><code>script</code></a> instruction to execute a script.</li>
+<li><a href="#background-script-instruction"><code>background_script</code></a> instruction to execute a script in a background.</li>
+<li><a href="#cache-instruction"><code>cache</code></a> instruction to persist files between task runs.</li>
+<li><a href="#artifacts-instruction"><code>artifacts</code></a> instruction to store and expose files created via a task.</li>
+<li><a href="#file-instruction"><code>file</code></a> instruction to create a file from an environment variable.</li>
+</ul>
+<h3 id="script-instruction">Script Instruction<a class="headerlink" href="#script-instruction" title="Permanent link">&para;</a></h3>
+<p>A <code>script</code> instruction executes commands via <code>shell</code> on Unix or <code>batch</code> on Windows. A <code>script</code> instruction can be named by
+adding a name as a prefix. For example <code>test_script</code> or <code>my_very_specific_build_step_script</code>. Naming script instructions
+helps gather more granular information about task execution. Cirrus CI will use it in future to auto-detect performance
+regressions.</p>
+<p>Script commands can be specified as a single string value or a list of string values in a <code>.cirrus.yml</code> configuration file
+like in the example below:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">check_task</span><span class="p">:</span>
+  <span class="nt">compile_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gradle --parallel classes testClasses</span>
+  <span class="nt">check_script</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo &quot;Here comes more than one script!&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">printenv</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gradle check</span>
+</code></pre></div>
+<p><strong>Note:</strong> Each script instruction is executed in a newly created process, therefore environment variables are not preserved between them.</p>
+<h3 id="background-script-instruction">Background Script Instruction<a class="headerlink" href="#background-script-instruction" title="Permanent link">&para;</a></h3>
+<p>A <code>background_script</code> instruction is absolutely the same as <code>script</code> instruction but Cirrus CI won't wait for the script to finish
+and will continue execution of further instructions.</p>
+<p>Background scripts can be useful when something needs to be executed in the background. For example, a database or
+some emulators. Traditionally the same effect is achieved by adding <code>&amp;</code> to a command like <code>$: command &amp;</code>. Problem here
+is that logs from <code>command</code> will be mixed into regular logs of the following commands. By using background scripts
+not only logs will be properly saved and displayed, but also <code>command</code> itself will be properly killed in the end of a task.</p>
+<p>Here is an example of how <code>background_script</code> instruction can be used to run an android emulator:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">android_test_task</span><span class="p">:</span>
+  <span class="nt">start_emulator_background_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">emulator -avd test -no-audio -no-window</span>
+  <span class="nt">wait_for_emulator_to_boot_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">adb wait-for-device</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gradle test</span>
+</code></pre></div>
+<h3 id="cache-instruction">Cache Instruction<a class="headerlink" href="#cache-instruction" title="Permanent link">&para;</a></h3>
+<p>A <code>cache</code> instruction allows to persist a folder and reuse it during the next execution of the task. A <code>cache</code> instruction can be named the same way as <code>script</code> instruction.</p>
+<p>Here is an example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+  <span class="nt">node_modules_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+    <span class="nt">reupload_on_changes</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span> <span class="c1"># since there is a fingerprint script</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo $CIRRUS_OS</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">node --version</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat package-lock.json</span>
+    <span class="nt">populate_script</span><span class="p">:</span> 
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npm install</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npm run test</span>
+</code></pre></div>
+<p>Either <code>folder</code> or a <code>folders</code> field (with a list of folder paths) is <em>required</em> and they tell the agent which folder paths to cache.</p>
+<p>Folder paths should be generally relative to the working directory (e.g. <code>node_modules</code>), with the exception of when only a single folder specified. In this case, it can be also an absolute path (<code>/usr/local/bundle</code>).</p>
+<p>Folder paths can contain a "glob" pattern to cache multiple files/folders within a working directory (e.g. <code>**/node_modules</code> will cache every <code>node_modules</code> folder within the working directory).</p>
+<p>A <code>fingerprint_script</code> and <code>fingerprint_key</code> are <em>optional</em> fields that can specify either:</p>
+<ul>
+<li>a script output of which will be hashed and used as a key for the given cache:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">node_modules_cache</span><span class="p">:</span>
+  <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+  <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat yarn.lock</span>
+</code></pre></div>
+<ul>
+<li>a final cache key:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">node_modules_cache</span><span class="p">:</span>
+  <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+  <span class="nt">fingerprint_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2038-01-20</span>
+</code></pre></div>
+<p>These two fields are mutually exclusive. By default the task name is used as a fingerprint value.</p>
+<p>After the last <code>script</code> instruction for the task succeeds, Cirrus CI will calculate checksum of the cached folder (note that it's unrelated to <code>fingerprint_script</code> or <code>fingerprint_key</code> fields) and re-upload the cache if it finds any changes.
+To avoid a time-costly re-upload, remove volatile files from the cache (for example, in the last <code>script</code> instruction of a task).</p>
+<p><code>populate_script</code> is an <em>optional</em> field that can specify a script that will be executed to populate the cache.
+<code>populate_script</code> should create the <code>folder</code> if it doesn't exist before the <code>cache</code> instruction.
+If your dependencies are updated often, please pay attention to <code>fingerprint_script</code> and make sure it will produce different outputs for different versions of your dependency (ideally just print locked versions of dependencies).</p>
+<p><code>reupload_on_changes</code> is an <em>optional</em> field that can specify whether Cirrus Agent should check if 
+contents of cached <code>folder</code> have changed during task execution and re-upload a cache entry in case of any changes.
+If <code>reupload_on_changes</code> option is not set explicitly then it will be set to <code>false</code> if <code>fingerprint_script</code> or <code>fingerprint_key</code> is presented and <code>true</code> otherwise.
+Cirrus Agent will detect additions, deletions and modifications of any files under specified <code>folder</code>. All of the detected changes will be
+logged under <code>Upload '$CACHE_NAME' cache</code> instructions for easier debugging of cache invalidations.</p>
+<p>That means the only difference between the example above and below is that <code>yarn install</code> will always be executed in the
+example below where in the example above only when <code>yarn.lock</code> has changes.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+  <span class="nt">node_modules_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat yarn.lock</span>
+  <span class="nt">install_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn install</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Caching for Pull Requests</p>
+<p>Tasks for PRs upload caches to a separate caching namespace to not interfere with caches used by other tasks.
+But such PR tasks <strong>can read</strong> all caches even from the main caching namespace for a repository.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Scope of cached artifacts</p>
+<p>Cache artifacts are shared between tasks, so two caches with the same name on e.g. Linux containers and macOS VMs will share the same set of files.
+This may introduce binary incompatibility between caches. To avoid that, add <code>echo $CIRRUS_OS</code> into <code>fingerprint_script</code> or use <code>$CIRRUS_OS</code> in <code>fingerprint_key</code>, which will distinguish caches based on OS.</p>
+</div>
+<h4 id="manual-cache-upload">Manual cache upload<a class="headerlink" href="#manual-cache-upload" title="Permanent link">&para;</a></h4>
+<p>Normally caches are uploaded at the end of the task execution. However, you can override the default behavior and upload them earlier.</p>
+<p>To do this, use the <code>upload_caches</code> instruction, which uploads a list of caches passed to it once executed:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+  <span class="nt">node_modules_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+  <span class="nt">upload_caches</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+  <span class="nt">install_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn install</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+  <span class="nt">pip_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~/.cache/pip</span>
+</code></pre></div>
+<p>Note that <code>pip</code> cache won't be uploaded in this example: using <code>upload_caches</code> disables the default behavior where all caches are automatically uploaded at the end of the task, so if you want to upload <code>pip</code> cache too, you'll have to either:</p>
+<ul>
+<li>extend the list of uploaded caches in the first <code>upload_caches</code> instruction</li>
+<li>insert a second <code>upload_caches</code> instruction that specifically targets <code>pip</code> cache</li>
+</ul>
+<h3 id="artifacts-instruction">Artifacts Instruction<a class="headerlink" href="#artifacts-instruction" title="Permanent link">&para;</a></h3>
+<p>An <code>artifacts</code> instruction allows to store files and expose them in the UI for downloading later. An <code>artifacts</code> instruction
+can be named the same way as <code>script</code> instruction and has only one required <code>path</code> field which accepts a <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob pattern</a>
+of files relative to <code>$CIRRUS_WORKING_DIR</code> to store. Right now only storing files under <a href="#environment-variables"><code>$CIRRUS_WORKING_DIR</code> folder</a> as artifacts is supported with a total size limit of 1G for a community task and with no limit on your own infrastructure.</p>
+<p>In the example below, <em>Build and Test</em> task produces two artifacts: <code>binaries</code> artifacts with all executables built during a
+successful task completion and <code>junit</code> artifacts with all test reports regardless of the final task status (more about
+that you can learn in the <a href="#execution-behavior-of-instructions">next section describing execution behavior</a>).</p>
+<div class="highlight"><pre><span></span><code><span class="nt">build_and_test_task</span><span class="p">:</span>
+  <span class="c1"># instructions to build and test</span>
+  <span class="nt">binaries_artifacts</span><span class="p">:</span>
+    <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;build/*&quot;</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">junit_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;**/test-results/**.xml&quot;</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">junit</span>
+</code></pre></div>
+<details class="tip"><summary>URLs to the artifacts</summary><h4 id="latest-build-artifacts">Latest build artifacts<a class="headerlink" href="#latest-build-artifacts" title="Permanent link">&para;</a></h4>
+<p>It is possible to refer to the latest artifacts directly (artifacts of the latest <strong>successful</strong> build).
+Use the following link format to download the latest artifact of a particular task:</p>
+<div class="highlight"><pre><span></span><code>https://api.cirrus-ci.com/v1/artifact/github/&lt;USER OR ORGANIZATION&gt;/&lt;REPOSITORY&gt;/&lt;TASK NAME&gt;/&lt;ARTIFACTS_NAME&gt;/&lt;PATH&gt;
+</code></pre></div>
+<p>It is possible to also <strong>download an archive</strong> of all files within an artifact with the following link:</p>
+<div class="highlight"><pre><span></span><code>https://api.cirrus-ci.com/v1/artifact/github/&lt;USER OR ORGANIZATION&gt;/&lt;REPOSITORY&gt;/&lt;TASK NAME&gt;/&lt;ARTIFACTS_NAME&gt;.zip
+</code></pre></div>
+<p>By default, Cirrus looks up the latest <strong>successful</strong> build of the default branch for the repository but the branch name
+can be customized via <code>?branch=&lt;BRANCH&gt;</code> query parameter.</p>
+<h4 id="current-build-artifacts">Current build artifacts<a class="headerlink" href="#current-build-artifacts" title="Permanent link">&para;</a></h4>
+<p>It is possible to refer to the artifacts of the current build directly:</p>
+<div class="highlight"><pre><span></span><code>https://api.cirrus-ci.com/v1/artifact/build/&lt;CIRRUS_BUILD_ID&gt;/&lt;ARTIFACTS_NAME&gt;.zip
+</code></pre></div>
+<p>Note that if several tasks are uploading artifacts with the same name then the ZIP archive from the above link will
+contain merged content of all artifacts. It's also possible to refer to an artifact of a particular task within a build
+by name:</p>
+<div class="highlight"><pre><span></span><code>https://api.cirrus-ci.com/v1/artifact/build/&lt;CIRRUS_BUILD_ID&gt;/&lt;TASK_NAME&gt;/&lt;ARTIFACTS_NAME&gt;.zip
+</code></pre></div>
+<p>It's also possible to download a particular file of an artifact and not the while archive by using <code>&lt;ARTIFACTS_NAME&gt;/&lt;PATH&gt;</code>
+instead of <code>&lt;ARTIFACTS_NAME&gt;.zip</code>.</p>
+</details>
+<h4 id="artifact-type">Artifact Type<a class="headerlink" href="#artifact-type" title="Permanent link">&para;</a></h4>
+<p>By default, Cirrus CI will try to guess mimetype of files in artifacts by looking at their extensions. In case when artifacts
+don't have extensions, it's possible to explicitly set the <code>Content-Type</code> via <code>type</code> field:</p>
+<div class="highlight"><pre><span></span><code>  <span class="nt">my_task</span><span class="p">:</span>
+    <span class="nt">my_dotjar_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">build/*.jar</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/java-archive</span>
+</code></pre></div>
+<p>A list of some of the basic types supported can be found <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types">here</a>.</p>
+<h4 id="artifact-parsing">Artifact Parsing<a class="headerlink" href="#artifact-parsing" title="Permanent link">&para;</a></h4>
+<p>Cirrus CI supports parsing artifacts in order to extract information that can be presented in the UI for a <a href="https://medium.com/cirruslabs/github-annotations-support-227d179cde31">better user experience</a>.
+Use the <code>format</code> field of an artifact instruction to specify artifact's format (mimetypes):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">junit_artifacts</span><span class="p">:</span>
+  <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;**/test-results/**.xml&quot;</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/xml</span>
+  <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">junit</span>
+</code></pre></div>
+<p>Currently, Cirrus CI supports:</p>
+<ul>
+<li><a href="../../examples/#android-lint">Android Lint Report format</a></li>
+<li><a href="../../examples/#golangci-lint">GolangCI Lint's JSON format</a></li>
+<li><a href="../../examples/#junit">JUnit's XML format</a><ul>
+<li><a href="../../examples/#unittest-annotations">Python's Unittest format</a></li>
+</ul>
+</li>
+<li><a href="../../examples/#xclogparser">XCLogParser</a></li>
+<li><a href="../../examples/#qodana">JetBrains Qodana</a></li>
+</ul>
+<p>Please <a href="https://github.com/cirruslabs/cirrus-ci-annotations/issues/new">let us know</a> what kind of formats Cirrus CI should support next!</p>
+<h3 id="file-instruction">File Instruction<a class="headerlink" href="#file-instruction" title="Permanent link">&para;</a></h3>
+<p>A <code>file</code> instruction allows to create a file from an environment variable. It is especially useful for situations when
+execution environment doesn't have proper shell to use <code>echo ... &gt;&gt; ...</code> syntax, for example, within <a href="https://docs.docker.com/samples/library/scratch/">scratch Docker containers</a>.</p>
+<p>Here is an example of how to populate Docker config from an <a href="#encrypted-variables">encrypted environment variable</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">environment</span><span class="p">:</span>
+    <span class="nt">DOCKER_CONFIG</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENCRYPTED[qwerty]</span>
+  <span class="nt">docker_config_file</span><span class="p">:</span>
+    <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/.docker/config</span>
+    <span class="nt">variable_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DOCKER_CONFIG</span>
+</code></pre></div>
+<h3 id="execution-behavior-of-instructions">Execution Behavior of Instructions<a class="headerlink" href="#execution-behavior-of-instructions" title="Permanent link">&para;</a></h3>
+<p>By default Cirrus CI executes instructions one after another and stops the overall task execution on the first failure.
+Sometimes there might be situations when some scripts should always be executed or some debug information needs to be saved
+on a failure. For such situations the <code>always</code> and <code>on_failure</code> keywords can be used to group instructions.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./run_tests.sh</span>
+  <span class="nt">on_failure</span><span class="p">:</span>
+    <span class="nt">debug_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./print_additional_debug_info.sh</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">test_reports_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./print_test_reports.sh</span>
+</code></pre></div>
+<p>In the example above, <code>print_additional_debug_info.sh</code> script will be executed only on failures to output some additional
+debug information. <code>print_test_reports.sh</code> on the other hand will be executed both on successful and and failed runs to
+print test reports (test reports are always useful! <img alt="😄" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f604.svg" title=":smile:" />).</p>
+<h2 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
+<p>Environment variables can be configured under the <code>env</code> or <code>environment</code> keywords in <code>.cirrus.yml</code> files. Here is an example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">echo_task</span><span class="p">:</span>
+  <span class="nt">env</span><span class="p">:</span>
+    <span class="nt">FOO</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Bar</span>
+  <span class="nt">echo_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">echo $FOO</span>
+</code></pre></div>
+<p>You can reference other environment variables using <code>$VAR</code>, <code>${VAR}</code> or <code>%VAR%</code> syntax:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">custom_path_task</span><span class="p">:</span>
+  <span class="nt">env</span><span class="p">:</span>
+    <span class="nt">SDK_ROOT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${HOME}/sdk</span>
+    <span class="nt">PATH</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${SDK_ROOT}/bin:${PATH}</span>
+  <span class="nt">custom_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sdktool install</span>
+</code></pre></div>
+<p>Environment variables may also be set at the root level of <code>.cirrus.yml</code>. In that case, they will be merged with each task's
+individual environment variables, but the task level variables always take precedence. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span>
+  <span class="nt">PATH</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/sdk/bin:${PATH}</span>
+
+<span class="nt">echo_task</span><span class="p">:</span>
+  <span class="nt">env</span><span class="p">:</span>
+    <span class="nt">PATH</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/opt/bin:${PATH}</span>
+  <span class="nt">echo_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">echo $PATH</span>
+</code></pre></div>
+<p>Will output <code>/opt/bin:/usr/local/bin:/usr/bin</code> or similar, but will not include <code>/sdk/bin</code> because this root level setting is
+ignored.</p>
+<p>Also some default environment variables are pre-defined:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CIRRUS_CI</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CI_NODE_INDEX</td>
+<td>Index of the current task within <code>CI_NODE_TOTAL</code> tasks</td>
+</tr>
+<tr>
+<td>CI_NODE_TOTAL</td>
+<td>Total amount of unique tasks for a given <code>CIRRUS_BUILD_ID</code> build</td>
+</tr>
+<tr>
+<td>CONTINUOUS_INTEGRATION</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>CIRRUS_API_CREATED</td>
+<td><code>true</code> if the current build was created through the <a href="../../api/">API</a>.</td>
+</tr>
+<tr>
+<td>CIRRUS_BASE_BRANCH</td>
+<td>Base branch name if current build was triggered by a PR. For example <code>master</code></td>
+</tr>
+<tr>
+<td>CIRRUS_BASE_SHA</td>
+<td>Base SHA if current build was triggered by a PR</td>
+</tr>
+<tr>
+<td>CIRRUS_BRANCH</td>
+<td>Branch name. For example <code>my-feature</code></td>
+</tr>
+<tr>
+<td>CIRRUS_BUILD_ID</td>
+<td>Unique build ID</td>
+</tr>
+<tr>
+<td>CIRRUS_CHANGE_IN_REPO</td>
+<td>Git SHA</td>
+</tr>
+<tr>
+<td>CIRRUS_CHANGE_MESSAGE</td>
+<td>Commit message or PR title and description, depending on trigger event (Non-PRs or PRs respectively).</td>
+</tr>
+<tr>
+<td>CIRRUS_CHANGE_TITLE</td>
+<td>First line of <code>CIRRUS_CHANGE_MESSAGE</code></td>
+</tr>
+<tr>
+<td>CIRRUS_CRON</td>
+<td><a href="#cron-builds">Cron Build</a> name if builds was triggered by Cron.</td>
+</tr>
+<tr>
+<td>CIRRUS_DEFAULT_BRANCH</td>
+<td>Default repository branch name. For example <code>master</code></td>
+</tr>
+<tr>
+<td>CIRRUS_LAST_GREEN_BUILD_ID</td>
+<td>The build id of the last successful build on the same branch at the time of the current build creation.</td>
+</tr>
+<tr>
+<td>CIRRUS_LAST_GREEN_CHANGE</td>
+<td>Corresponding to <code>CIRRUS_LAST_GREEN_BUILD_ID</code> SHA (used in <a href="#supported-functions"><code>changesInclude</code> function</a>).</td>
+</tr>
+<tr>
+<td>CIRRUS_PR</td>
+<td>PR number if current build was triggered by a PR. For example <code>239</code>.</td>
+</tr>
+<tr>
+<td>CIRRUS_PR_DRAFT</td>
+<td><code>true</code> if current build was triggered by a Draft PR.</td>
+</tr>
+<tr>
+<td>CIRRUS_TAG</td>
+<td>Tag name if current build was triggered by a new tag. For example <code>v1.0</code></td>
+</tr>
+<tr>
+<td>CIRRUS_OS, OS</td>
+<td>Host OS. Either <code>linux</code>, <code>windows</code> or <code>darwin</code>.</td>
+</tr>
+<tr>
+<td>CIRRUS_TASK_NAME</td>
+<td>Task name</td>
+</tr>
+<tr>
+<td>CIRRUS_TASK_ID</td>
+<td>Unique task ID</td>
+</tr>
+<tr>
+<td>CIRRUS_RELEASE</td>
+<td>GitHub Release id if current tag was created for a release. Handy for <a href="../../examples/#release-assets">uploading release assets</a>.</td>
+</tr>
+<tr>
+<td>CIRRUS_REPO_CLONE_TOKEN</td>
+<td>Temporary GitHub access token to perform a clone.</td>
+</tr>
+<tr>
+<td>CIRRUS_REPO_NAME</td>
+<td>Repository name. For example <code>my-project</code></td>
+</tr>
+<tr>
+<td>CIRRUS_REPO_OWNER</td>
+<td>Repository owner (an organization or a user). For example <code>my-organization</code></td>
+</tr>
+<tr>
+<td>CIRRUS_REPO_FULL_NAME</td>
+<td>Repository full name/slug. For example <code>my-organization/my-project</code></td>
+</tr>
+<tr>
+<td>CIRRUS_REPO_CLONE_URL</td>
+<td>URL used for cloning. For example <code>https://github.com/my-organization/my-project.git</code></td>
+</tr>
+<tr>
+<td>CIRRUS_USER_COLLABORATOR</td>
+<td><code>true</code> if a user initialized a build is already a contributor to the repository. <code>false</code> otherwise.</td>
+</tr>
+<tr>
+<td>CIRRUS_USER_PERMISSION</td>
+<td><code>admin</code>, <code>write</code>, <code>read</code> or <code>none</code>.</td>
+</tr>
+<tr>
+<td>CIRRUS_HTTP_CACHE_HOST</td>
+<td>Host and port number on which <a href="#http-cache">local HTTP cache</a> can be accessed on.</td>
+</tr>
+<tr>
+<td>GITHUB_CHECK_SUITE_ID</td>
+<td>Monotonically increasing id of a corresponding <a href="https://help.github.com/en/articles/about-status-checks#checks">GitHub Check Suite</a> which caused the Cirrus CI build.</td>
+</tr>
+<tr>
+<td>CIRRUS_ENV</td>
+<td>Path to a file, by writing to which you can <a href="../tips-and-tricks/#setting-environment-variables-from-scripts">set task-wide environment variables</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="behavioral-environment-variables">Behavioral Environment Variables<a class="headerlink" href="#behavioral-environment-variables" title="Permanent link">&para;</a></h3>
+<p>And some environment variables can be set to control behavior of the Cirrus CI Agent:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CIRRUS_CLONE_DEPTH</td>
+<td><code>0</code> which will reflect in a full clone of a single branch</td>
+<td>Clone depth.</td>
+</tr>
+<tr>
+<td>CIRRUS_CLONE_SUBMODULES</td>
+<td><code>false</code></td>
+<td>Set to <code>true</code> to clone submodules recursively.</td>
+</tr>
+<tr>
+<td>CIRRUS_LOG_TIMESTAMP</td>
+<td><code>false</code></td>
+<td>Indicate Cirrus Agent to prepend timestamp to each line of logs.</td>
+</tr>
+<tr>
+<td>CIRRUS_SHELL</td>
+<td><code>sh</code> on Linux/macOS/FreeBSD and <code>cmd.exe</code> on Windows. Set to <code>direct</code> to execute each script directly without wrapping the commands in a shell script.</td>
+<td>Shell that Cirrus CI uses to execute scripts. By default <code>sh</code> is used.</td>
+</tr>
+<tr>
+<td>CIRRUS_WORKING_DIR</td>
+<td><code>cirrus-ci-build</code> folder inside of a system's temporary folder</td>
+<td>Working directory where Cirrus CI executes builds. Default to <code>cirrus-ci-build</code> folder inside of a system's temporary folder.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="encrypted-variables">Encrypted Variables<a class="headerlink" href="#encrypted-variables" title="Permanent link">&para;</a></h2>
+<p>It is possible to add encrypted variables to a <code>.cirrus.yml</code> file. These variables are decrypted only in builds for commits and pull requests that are made by users with <code>write</code> permission or approved by them.</p>
+<p>In order to encrypt a variable go to repository's settings page via clicking settings icon <img alt="settings icon" src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg" />
+on a repository's main page (for example <code>https://cirrus-ci.com/github/my-organization/my-repository</code>) and follow instructions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only users with <code>WRITE</code> permissions can add encrypted variables to a repository.</p>
+</div>
+<p>An encrypted variable will be presented in a form like <code>ENCRYPTED[qwerty239abc]</code> which can be safely committed to <code>.cirrus.yml</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">publish_task</span><span class="p">:</span>
+  <span class="nt">environment</span><span class="p">:</span>
+    <span class="nt">AUTH_TOKEN</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENCRYPTED[qwerty239abc]</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./publish.sh</span>
+</code></pre></div>
+<p>Cirrus CI encrypts variables with a unique per repository 256-bit encryption key so forks and even repositories within
+the same organization cannot re-use them. <code>qwerty239abc</code> from the example above is <strong>NOT</strong> the content of your encrypted
+variable, it's just an internal ID. No one can brute force your secrets from such ID. In addition, Cirrus CI doesn't know
+a relation between an encrypted variable and a repository for which the encrypted variable was created.</p>
+<details class="tip"><summary>Organization Level Encrypted Variables</summary><p>Sometimes there might be secrets that are used in almost all repositories of an organization. For example, credentials
+to a <a href="../supported-computing-services/">compute service</a> where tasks will be executed. In order to create such sharable
+encrypted variable go to organization's settings page via clicking settings icon <img alt="settings icon" src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_settings_black_24px.svg" />
+on an organization's main page (for example <code>https://cirrus-ci.com/github/my-organization</code>) and follow instructions
+in <em>Organization Level Encrypted Variables</em> section.</p>
+</details>
+<details class="warning"><summary>Encrypted Variable for Cloud Credentials</summary><p>In case you use integration with <a href="../supported-computing-services/">one of supported computing services</a>, an encrypted variable
+used to store credentials that Cirrus is using to communicate with the computing service won't be decrypted if used
+in <a href="#encrypted-variables">environment variables</a>. These credentials have too many permissions for most of the cases,
+please create separate credentials with the minimum needed permissions for your specific case.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gcp_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SECURED[!qwerty]</span>
+
+<span class="nt">env</span><span class="p">:</span>
+  <span class="nt">CREDENTIALS</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SECURED[!qwerty]</span> <span class="c1"># won&#39;t be decrypted in any case</span>
+</code></pre></div>
+</details>
+<details class="tip"><summary>Skipping Task in Forked Repository</summary><p>In forked repository the decryption of variable fails, which causes failure of task depending on it.
+To avoid this by default, make the sensitive task conditional:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Task requiring decrypted variables</span>
+  <span class="nt">only_if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CIRRUS_REPO_OWNER == &#39;my-organization&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>Owner of forked repository can re-enable the task, if they have the required sensitive data, by encrypting
+the variable by themselves and editing both the encrypted variable and repo-owner condition
+in the <code>.cirrus.yml</code> file.</p>
+</details>
+<h2 id="cron-builds">Cron Builds<a class="headerlink" href="#cron-builds" title="Permanent link">&para;</a></h2>
+<p>It is possible to configure invocations of re-occurring builds via the well-known Cron expressions. Cron builds can be
+configured on a repository's settings page (not in <code>.cirrus.yml</code>).</p>
+<p>It's possible to configure several cron builds with unique <code>names</code> which will be available via <code>CIRRUS_CRON</code> <a href="#environment-variables">environment variable</a>.
+Each cron build should specify <em>branch</em> to trigger new builds for and a cron expression compatible with Quartz. You can use
+<a href="https://www.freeformatter.com/cron-expression-generator-quartz.html">this generator</a> to generate/validate your expressions.</p>
+<p><strong>Note:</strong> Cron Builds are timed with the UTC timezone.</p>
+<h2 id="matrix-modification">Matrix Modification<a class="headerlink" href="#matrix-modification" title="Permanent link">&para;</a></h2>
+<p>Sometimes it's useful to run the same task against different software versions. Or run different batches of tests based
+on an environment variable. For cases like these, the <code>matrix</code> modifier comes very handy. It's possible to use <code>matrix</code>
+keyword <strong>only inside of a particular task</strong> to have multiple tasks based on the original one. Each new task will be created
+from the original task by replacing the whole <code>matrix</code> YAML node with each <code>matrix</code>'s children separately.</p>
+<p>Let check an example of a <code>.cirrus.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">matrix</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:lts</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+</code></pre></div>
+<p>Which will be expanded into:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:lts</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code>matrix</code> modifier can be used multiple times within a task.</p>
+</div>
+<p>The <code>matrix</code> modification makes it easy to create some pretty complex testing scenarios like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">matrix</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:lts</span>
+  <span class="nt">node_modules_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">node --version</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat yarn.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn install</span>
+  <span class="nt">matrix</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build</span>
+      <span class="nt">build_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn build</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test</span>
+      <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+</code></pre></div>
+<h2 id="task-execution-dependencies">Task Execution Dependencies<a class="headerlink" href="#task-execution-dependencies" title="Permanent link">&para;</a></h2>
+<p>Sometimes it might be very handy to execute some tasks only after successful execution of other tasks. For such cases
+it is possible to specify task names that a particular task depends. Use <code>depends_on</code> keyword to define dependencies:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lint_task</span><span class="p">:</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run lint</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+
+<span class="nt">publish_task</span><span class="p">:</span>
+  <span class="nt">depends_on</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">test</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lint</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run publish</span>
+</code></pre></div>
+<details class="tip"><summary>Task Names and Aliases</summary><p>It is possible to specify the task's name via the <code>name</code> field. <code>lint_task</code> syntax is a syntactic sugar that will be
+expanded into:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lint</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>Names can be also pretty complex:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test Shard $TESTS_SPLIT</span>
+  <span class="nt">env</span><span class="p">:</span>
+    <span class="nt">matrix</span><span class="p">:</span>
+      <span class="nt">TESTS_SPLIT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1/3</span>
+      <span class="nt">TESTS_SPLIT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2/2</span>
+      <span class="nt">TESTS_SPLIT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3/3</span>
+  <span class="nt">tests_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./.ci/tests.sh</span>
+
+<span class="nt">deploy_task</span><span class="p">:</span>
+  <span class="nt">only_if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CIRRUS_BRANCH == &#39;master&#39;</span>
+  <span class="nt">depends_on</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Test Shard 1/3</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Test Shard 2/3</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Test Shard 3/3</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./.ci/deploy.sh</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>Complex task names make it difficult to list and <strong>maintain</strong> all of such task names in your <code>depends_on</code> field. In order to 
+make it simpler you can use the <code>alias</code> field to have a short simplified name for several tasks to use in <code>depends_on</code>.</p>
+<p>Here is a modified version of an example above that leverages the <code>alias</code> field:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test Shard $TESTS_SPLIT</span>
+<span class="hll">  <span class="nt">alias</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Tests</span>
+</span>  <span class="nt">env</span><span class="p">:</span>
+    <span class="nt">matrix</span><span class="p">:</span>
+      <span class="nt">TESTS_SPLIT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1/3</span>
+      <span class="nt">TESTS_SPLIT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2/2</span>
+      <span class="nt">TESTS_SPLIT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3/3</span>
+  <span class="nt">tests_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./.ci/tests.sh</span>
+
+<span class="nt">deploy_task</span><span class="p">:</span>
+  <span class="nt">only_if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CIRRUS_BRANCH == &#39;master&#39;</span>
+<span class="hll">  <span class="nt">depends_on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Tests</span>
+</span>  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./.ci/deploy.sh</span>
+</code></pre></div>
+</details>
+<h2 id="conditional-task-execution">Conditional Task Execution<a class="headerlink" href="#conditional-task-execution" title="Permanent link">&para;</a></h2>
+<p>Some tasks are meant to be created only if a certain condition is met. And some tasks can be skipped in some cases.
+Cirrus CI supports the <code>only_if</code> and <code>skip</code> keywords in order to provide such flexibility:</p>
+<!-- markdownlint-disable MD031 -->
+<!-- markdownlint-disable MD032 -->
+<ul>
+<li>
+<p>The <code>only_if</code> keyword controls whether or not a task will be created. For example, you may want to publish only changes
+  committed to the <code>master</code> branch.
+  <div class="highlight"><pre><span></span><code><span class="nt">publish_task</span><span class="p">:</span>
+  <span class="nt">only_if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CIRRUS_BRANCH == &#39;master&#39;</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run publish</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>The <code>skip</code> keyword allows to skip execution of a task and mark it as successful. For example, you may want to skip linting
+  if no source files have changed since the last successful run.
+  <div class="highlight"><pre><span></span><code><span class="nt">lint_task</span><span class="p">:</span>
+  <span class="nt">skip</span><span class="p">:</span> <span class="s">&quot;!changesInclude(&#39;.cirrus.yml&#39;,</span><span class="nv"> </span><span class="s">&#39;**.{js,ts}&#39;)&quot;</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run lint</span>
+</code></pre></div></p>
+</li>
+</ul>
+<!-- markdownlint-enable MD032 -->
+<!-- markdownlint-enable MD031 -->
+
+<div class="admonition tip">
+<p class="admonition-title">Skip CI Completely</p>
+<p>Just include <code>[skip ci]</code> or <code>[skip cirrus]</code> in the first line of your commit message in order to skip CI execution for a commit completely.</p>
+<p>If you push multiple commits at the same time, only the first line of the last commit message will be checked for <code>[skip ci]</code>
+or <code>[ci skip]</code>.</p>
+<p>If you open a PR, PR title will be checked for <code>[skip ci]</code> or <code>[ci skip]</code> instead of the last commit message on the PR branch.</p>
+</div>
+<h3 id="supported-operators">Supported Operators<a class="headerlink" href="#supported-operators" title="Permanent link">&para;</a></h3>
+<p>Currently only basic operators like <code>==</code>, <code>!=</code>, <code>=~</code>, <code>!=~</code>, <code>&amp;&amp;</code>, <code>||</code> and unary <code>!</code> are supported in <code>only_if</code> and <code>skip</code> expressions.
+<a href="#environment-variables">Environment variables</a> can also be used as usually.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pattern Matching Example</p>
+<p>Use <code>=~</code> operator for pattern matching.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">check_aggreement_task</span><span class="p">:</span>
+  <span class="nt">only_if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CIRRUS_BRANCH =~ &#39;pull/.*&#39;</span>
+</code></pre></div>
+<p>Note that <code>=~</code> operator can match against multiline values (dotall mode) and therefore looking for the exact occurrence of the regular expression
+so don't forget to use <code>.*</code> around your term for matching it at any position (for example, <code>$CIRRUS_CHANGE_TITLE =~ '.*[docs].*'</code>).</p>
+</div>
+<h3 id="supported-functions">Supported Functions<a class="headerlink" href="#supported-functions" title="Permanent link">&para;</a></h3>
+<p>Currently only one function is supported in the <code>only_if</code> and <code>skip</code> expressions. <code>changesInclude</code> function allows to check
+which files were changed. <code>changesInclude</code> behaves differently for PR builds and regular builds:</p>
+<ul>
+<li>For PR builds, <code>changesInclude</code> will check the list of files affected by the PR.</li>
+<li>For regular builds, <code>changesInclude</code> will use the <code>CIRRUS_LAST_GREEN_CHANGE</code> <a href="#environment-variables">environment variable</a>
+  to determine list of affected files between <code>CIRRUS_LAST_GREEN_CHANGE</code> and <code>CIRRUS_CHANGE_IN_REPO</code>.</li>
+</ul>
+<p><code>changesInclude</code> function can be very useful for skipping some tasks when no changes to sources have been made since the
+last successful Cirrus CI build.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lint_task</span><span class="p">:</span>
+  <span class="nt">skip</span><span class="p">:</span> <span class="s">&quot;!changesInclude(&#39;.cirrus.yml&#39;,</span><span class="nv"> </span><span class="s">&#39;**.{js,ts}&#39;)&quot;</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run lint</span>
+</code></pre></div>
+<h2 id="auto-cancellation-of-tasks">Auto-Cancellation of Tasks<a class="headerlink" href="#auto-cancellation-of-tasks" title="Permanent link">&para;</a></h2>
+<p>Cirrus CI can automatically cancel tasks in case of new pushes to the same branch. By default, Cirrus CI auto-cancels
+all tasks for non default branch (for most repositories <code>master</code> branch) but this behavior can be changed by specifying
+<code>auto_cancellation</code> field:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">auto_cancellation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CIRRUS_BRANCH != &#39;master&#39; &amp;&amp; $CIRRUS_BRANCH !=~ &#39;release/.*&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<h2 id="stateful-tasks">Stateful Tasks<a class="headerlink" href="#stateful-tasks" title="Permanent link">&para;</a></h2>
+<p>It's possible to tell Cirrus CI that a certain task is stateful and Cirrus CI will use a slightly different scheduling algorithm
+to minimize chances of such tasks being interrupted. Stateful tasks are intended to use low CPU count.
+<strong>Scheduling times of such stateful tasks might be a bit longer then usual especially for tasks with high CPU requirements.</strong></p>
+<p>By default, Cirrus CI marks a task as stateful if its name contains one of the following terms: <code>deploy</code>, <code>push</code>, <code>publish</code>, 
+<code>upload</code> or <code>release</code>. Otherwise, you can explicitly mark a task as stateful via <code>stateful</code> field:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Propagate to Production</span>
+  <span class="nt">stateful</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<h2 id="failure-toleration">Failure Toleration<a class="headerlink" href="#failure-toleration" title="Permanent link">&para;</a></h2>
+<p>Sometimes tasks can play a role of sanity checks. For example, a task can check that your library is working with the latest nightly
+version of some dependency package. It will be great to be notified about such failures but it's not necessary to fail the
+whole build when a failure occurs. Cirrus CI has the <code>allow_failures</code> keyword which will make a task to not affect the overall status of a build.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_nightly_task</span><span class="p">:</span>
+  <span class="nt">allow_failures</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$SOME_PACKAGE_DEPENDENCY_VERSION == &#39;nightly&#39;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Skipping Notifications</p>
+<p>You can also skip posting <strong>red statuses</strong> to GitHub via <code>skip_notifications</code> field.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">skip_notifications</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$SOME_PACKAGE_DEPENDENCY_VERSION == &#39;nightly&#39;</span>
+</code></pre></div>
+<p>It can help to track potential issues overtime without distracting the main workflow.</p>
+</div>
+<h2 id="manual-tasks">Manual tasks<a class="headerlink" href="#manual-tasks" title="Permanent link">&para;</a></h2>
+<p>By default a Cirrus CI task is automatically triggered when all its <a href="#task-execution-dependencies">dependency tasks</a>
+finished successfully. Sometimes though, it can be very handy to trigger some tasks manually, for example, perform a
+deployment to staging for manual testing upon all automation checks have succeeded. In order change the default behavior
+please use <code>trigger_type</code> field like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="s">&quot;Staging</span><span class="nv"> </span><span class="s">Deploy&quot;</span>
+  <span class="nt">trigger_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">manual</span>
+  <span class="nt">depends_on</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Tests (Unit)</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Tests (Ingegration)</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Lint</span>
+</code></pre></div>
+<p>You'll be able to manually trigger such paused tasks via Cirrus CI Web UI or directly from GitHub Checks page.</p>
+<h2 id="task-execution-lock">Task Execution Lock<a class="headerlink" href="#task-execution-lock" title="Permanent link">&para;</a></h2>
+<p>Some CI tasks perform external operations which are required to be executed one at a time. For example, parallel deploys
+to the same environment is usually a bad idea. In order to restrict parallel execution of a certain task within a repository,
+you can use <code>execution_lock</code> to specify a task's lock key, a unique string that will be used to make sure that any tasks with the same <code>execution_lock</code> string
+are executed one at a time. Here is an example of how to make sure deployments 
+on a specific branch <em>can not</em> run in parallel:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="s">&quot;Automatic</span><span class="nv"> </span><span class="s">Staging</span><span class="nv"> </span><span class="s">Deploy&quot;</span>
+  <span class="nt">execution_lock</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CIRRUS_BRANCH</span>
+</code></pre></div>
+<p>You'll be able to manually trigger such paused tasks via the <a href="https://cirrus-ci.com">Cirrus CI Web Dashboard</a> or directly from the commit's <code>checks</code> page on GitHub.</p>
+<h2 id="required-pr-labels">Required PR Labels<a class="headerlink" href="#required-pr-labels" title="Permanent link">&para;</a></h2>
+<p>Similar to <a href="#manual-tasks">manual tasks</a> Cirrus CI can pause execution of tasks until a corresponding PR gets labeled.
+This can be particular useful when you'd like to do an initial review before running all unit and integration
+tests on every <a href="../supported-computing-services/">supported platform</a>. Use the <code>required_pr_labels</code> field to specify
+a list of labels a PR requires to have in order to trigger a task. Here is a simple example of <code>.cirrus.yml</code> config
+that automatically runs a linting tool but requires <code>initial-review</code> label being presented in order to run tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lint_task</span><span class="p">:</span>
+  <span class="c1"># ...</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">required_pr_labels</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial-review</span>
+  <span class="c1"># ...</span>
+</code></pre></div>
+<p><strong>Note:</strong> <code>required_pr_labels</code> has no effect on tasks created for non-PR builds.</p>
+<p>You can also require multiple labels to continue executing the task for even more flexibility:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">deploy_task</span><span class="p">:</span>
+  <span class="nt">required_pr_labels</span><span class="p">:</span> 
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">initial-review</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ready-for-staging</span>
+  <span class="nt">depends_on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">build</span>
+  <span class="c1"># ...</span>
+</code></pre></div>
+<p>In the example above both <code>initial-review</code> and <code>ready-for-staging</code> labels should be presented on a PR in order to perform
+a deployment via <code>deploy</code> task.</p>
+<h2 id="http-cache">HTTP Cache<a class="headerlink" href="#http-cache" title="Permanent link">&para;</a></h2>
+<p>For the most cases regular caching mechanism where Cirrus CI caches a folder is more than enough. But modern build systems
+like <a href="https://gradle.org/">Gradle</a>, <a href="https://bazel.build/">Bazel</a> and <a href="https://www.pantsbuild.org/">Pants</a> can take
+advantage of remote caching. Remote caching is when a build system uploads and downloads intermediate results of a build
+execution while the build itself is still executing.</p>
+<p>Cirrus CI agent starts a local caching server and exposes it via <code>CIRRUS_HTTP_CACHE_HOST</code> environments variable. Caching server
+supports <code>GET</code>, <code>POST</code> and <code>HEAD</code> requests to upload, download and check presence of artifacts.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If port <code>12321</code> is available <code>CIRRUS_HTTP_CACHE_HOST</code> will be equal to <code>localhost:12321</code>.</p>
+</div>
+<p>For example running the following command:</p>
+<div class="highlight"><pre><span></span><code>curl -s -X POST --data-binary @myfolder.tar.gz http://<span class="nv">$CIRRUS_HTTP_CACHE_HOST</span>/name-key
+</code></pre></div>
+<p>...has the same effect as the following <a href="#cache-instruction">caching instruction</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name_cache</span><span class="p">:</span>
+  <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">myfolder</span>
+  <span class="nt">fingerprint_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">key</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>To see how HTTP Cache can be used with Gradle's Build Cache please check <a href="../../examples/#build-cache">this example</a>.</p>
+</div>
+<h2 id="additional-containers">Additional Containers<a class="headerlink" href="#additional-containers" title="Permanent link">&para;</a></h2>
+<p>Sometimes one container is not enough to run a CI build. For example, your application might use a MySQL database
+as a storage. In this case you most likely want a MySQL instance running for your tests.</p>
+<p>One option here is to pre-install MySQL and use a <a href="#background-script-instruction"><code>background_script</code></a> to start it. This
+approach has some inconveniences like the need to pre-install MySQL by building a custom Docker container.</p>
+<p>For such use cases Cirrus CI allows to run additional containers in parallel with the main container that executes a task.
+Each additional container is defined under <code>additional_containers</code> keyword in <code>.cirrus.yml</code>. Each additional container
+should have a unique <code>name</code> and specify at least Docker <code>image</code> and <code>port</code> that this container exposes.</p>
+<p>In the example below we use an <a href="https://hub.docker.com/_/mysql/">official MySQL Docker image</a> that exposes
+the standard MySQL port (3306). Tests will be able to access MySQL instance via <code>localhost:3306</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">golang:latest</span>
+  <span class="nt">additional_containers</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql:latest</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
+      <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">512Mi</span>
+      <span class="nt">env</span><span class="p">:</span>
+        <span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+</code></pre></div>
+<p>Additional container can be very handy in many scenarios. Please check <a href="../../examples/">Cirrus CI catalog of examples</a> for more details.</p>
+<details class="info"><summary>Default Resources</summary><p>By default, each additional container will get <code>0.5</code> CPU and <code>512Mi</code> of memory. These values can be configured as usual
+via <code>cpu</code> and <code>memory</code> fields.</p>
+</details>
+<details class="tip"><summary>Port Mapping</summary><p>It's also possible to map ports of additional containers by using <code>&lt;HOST_PORT&gt;:&lt;CONTAINER_PORT&gt;</code> format for the <code>port</code> field.
+For example, <code>port: 80:8080</code> will map port <code>8080</code> of the container to be available on local port <code>80</code> within a task.</p>
+<p><strong>Note:</strong> don't use port mapping unless absolutely necessary. A perfect use case is when you have several additional containers
+which start the service on the same port and there's no easy way to change that. Port mapping limits 
+the number of places the container can be scheduled and will affect how fast such tasks are scheduled.</p>
+<p>To specify multiple mappings use the <code>ports</code> field, instead of the <code>port</code>:
+<div class="highlight"><pre><span></span><code><span class="nt">ports</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
+</code></pre></div></p>
+</details>
+<details class="tip"><summary>Overriding Default Command</summary><p>It's also possible to override the default <code>CMD</code> of an additional container via <code>command</code> field:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">golang:latest</span>
+  <span class="nt">additional_containers</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql:latest</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">7777</span>
+      <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysqld --port 7777</span>
+      <span class="nt">env</span><span class="p">:</span>
+        <span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+</code></pre></div>
+</details>
+<details class="warning"><summary>Warning</summary><p><strong>Note</strong> that <code>additional_containers</code> can be used only with <a href="../supported-computing-services/#community-cluster">Community Cluster</a>
+or <a href="../supported-computing-services/#kubernetes-engine">Google's Kubernetes Engine</a>.</p>
+</details>
+<h2 id="embedded-badges">Embedded Badges<a class="headerlink" href="#embedded-badges" title="Permanent link">&para;</a></h2>
+<p>Cirrus CI provides a way to embed a badge that can represent status of your builds into a ReadMe file or a website.</p>
+<p>For example, this is a badge for <code>cirruslabs/cirrus-ci-web</code> repository that contains Cirrus CI's front end: <a href="https://github.com/cirruslabs/cirrus-ci-web"><img alt="Passing build badge example" src="https://api.cirrus-ci.com/github/cirruslabs/cirrus-ci-web.svg" /></a></p>
+<p>In order to embed such a check into a "read-me" file or your website, just use a URL to a badge that looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https://api.cirrus-ci.com/github/&lt;USER OR ORGANIZATION&gt;/&lt;REPOSITORY&gt;.svg</span>
+</code></pre></div>
+<p>If you want a badge for a particular branch, use the <code>?branch=&lt;BRANCH NAME&gt;</code> query parameter (at the end of the URL) like this:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https://api.cirrus-ci.com/github/&lt;USER OR ORGANIZATION&gt;/&lt;REPOSITORY&gt;.svg?branch=&lt;BRANCH NAME&gt;</span>
+</code></pre></div>
+<p>By default, Cirrus picks the latest build in a final state for the repository or a particular branch if <code>branch</code> parameter is specified. It's also possible to explicitly set a concrete build to use with <code>?buildId=&lt;BUILD ID&gt;</code> query parameter.</p>
+<p>If you want a badge for a particular task within the latest finished build, use the <code>?task=&lt;TASK NAME&gt;</code> query parameter (at the end of the URL) like this:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https://api.cirrus-ci.com/github/&lt;USER OR ORGANIZATION&gt;/&lt;REPOSITORY&gt;.svg?task=tests</span>
+</code></pre></div>
+<p>You can even pick a specific script instruction within the task with an additional <code>script=&lt;SCRIPT NAME&gt;</code> parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https://api.cirrus-ci.com/github/&lt;USER OR ORGANIZATION&gt;/&lt;REPOSITORY&gt;.svg?task=build&amp;script=lint</span>
+</code></pre></div>
+<h3 id="badges-in-markdown">Badges in Markdown<a class="headerlink" href="#badges-in-markdown" title="Permanent link">&para;</a></h3>
+<p>Here is how Cirrus CI's badge can be embeded in a Markdown file:</p>
+<div class="highlight"><pre><span></span><code>[<span class="nt">![Build Status</span>](<span class="na">https://api.cirrus-ci.com/github/&lt;USER OR ORGANIZATION&gt;/&lt;REPOSITORY&gt;.svg</span>)](https://cirrus-ci.com/github/&lt;USER OR ORGANIZATION&gt;/&lt;REPOSITORY&gt;)
+</code></pre></div>
+<h2 id="cctray-xml">CCTray XML<a class="headerlink" href="#cctray-xml" title="Permanent link">&para;</a></h2>
+<p>Cirrus CI supports exporting information about the latest repository builds via the <a href="https://cctray.org/">CCTray XML format</a>.
+Use the following URL format with a tool of your choice (such as <a href="http://ccmenu.org/">CCMenu</a>):</p>
+<div class="highlight"><pre><span></span><code><span class="go">https://api.cirrus-ci.com/github/&lt;USER OR ORGANIZATION&gt;/&lt;REPOSITORY&gt;/cctray.xml</span>
+</code></pre></div>
+<p><strong>Note:</strong> for private repositories you'll need to configure <a href="../../api/#authorization">access token</a>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" title="Back to top" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../quick-start/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Quick Start
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../programming-tasks/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Programming Tasks in Starlark
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            © Cirrus Labs 2017-present
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs Insiders
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/cirrus_labs" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.4c32c4e3.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c46528a6.min.js"></script>
+      
+    
+  </body>
+</html>

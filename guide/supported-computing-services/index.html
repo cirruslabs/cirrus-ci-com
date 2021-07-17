@@ -1,0 +1,1956 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cirrus CI is a modern Continuous Integration system built for the era of cloud computing. Cirrus CI supports Linux, Windows, macOS and FreeBSD environments as well as various cloud computing services like Kubernetes, Google Cloud, AWS and Azure.
+">
+      
+      
+      
+        <meta name="author" content="Cirrus Labs">
+      
+      
+        <link rel="canonical" href="https://cirrus-ci.org/guide/supported-computing-services/">
+      
+      
+        
+      
+      <link rel="icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.4+insiders-2.7.2">
+    
+    
+      
+        <title>Computing Services - Cirrus CI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.48946aae.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.77b964be.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/landing.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <script>function __scope(t,e="../.."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#google-cloud" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cirrus CI" class="md-header__button md-logo" aria-label="Cirrus CI" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cirrus CI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Computing Services
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/cirruslabs/cirrus-ci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../features/" class="md-tabs__link">
+      Features
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link md-tabs__link--active">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../examples/" class="md-tabs__link">
+      Examples
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../pricing/" class="md-tabs__link">
+      Pricing
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../support/" class="md-tabs__link">
+      Support
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://medium.com/cirruslabs" class="md-tabs__link">
+      Blog
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://cirrus-ci.com/" class="md-tabs__link">
+      Go to App
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cirrus CI" class="md-nav__button md-logo" aria-label="Cirrus CI" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Cirrus CI
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/cirruslabs/cirrus-ci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          User Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-tasks/" class="md-nav__link">
+        Writing Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../programming-tasks/" class="md-nav__link">
+        Programming Tasks in Starlark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips-and-tricks/" class="md-nav__link">
+        Configuration Tips and Tricks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_5" type="checkbox" id="__nav_3_1_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_5">
+          Execution Environment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Execution Environment" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Execution Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        Linux Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/" class="md-nav__link">
+        Windows Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macOS/" class="md-nav__link">
+        macOS VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FreeBSD/" class="md-nav__link">
+        FreeBSD VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../persistent-workers/" class="md-nav__link">
+        Persistent Workers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-builder-vm/" class="md-nav__link">
+        Docker Builder on VM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-builds-on-kubernetes/" class="md-nav__link">
+        Docker Builds on GKE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-pipe/" class="md-nav__link">
+        Docker Pipe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-vms/" class="md-nav__link">
+        Custom VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Computing Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Computing Services
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#google-cloud" class="md-nav__link">
+    Google Cloud
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compute-engine" class="md-nav__link">
+    Compute Engine
+  </a>
+  
+    <nav class="md-nav" aria-label="Compute Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-vm-images" class="md-nav__link">
+    Custom VM images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-support" class="md-nav__link">
+    Windows Support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#freebsd-support" class="md-nav__link">
+    FreeBSD Support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-containers-on-dedicated-vms" class="md-nav__link">
+    Docker Containers on Dedicated VMs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-scopes" class="md-nav__link">
+    Instance Scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preemptible-instances" class="md-nav__link">
+    Preemptible Instances
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-engine" class="md-nav__link">
+    Kubernetes Engine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    AWS
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    EC2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eks" class="md-nav__link">
+    EKS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure" class="md-nav__link">
+    Azure
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-container-instances" class="md-nav__link">
+    Azure Container Instances
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oracle-cloud" class="md-nav__link">
+    Oracle Cloud
+  </a>
+  
+    <nav class="md-nav" aria-label="Oracle Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-cluster" class="md-nav__link">
+    Kubernetes Cluster
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-life/" class="md-nav__link">
+        Life of a Build
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notifications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Legal
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Legal" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Legal
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/privacy/" class="md-nav__link">
+        Privacy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/terms/" class="md-nav__link">
+        Terms of Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pricing/" class="md-nav__link">
+        Pricing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://medium.com/cirruslabs" class="md-nav__link">
+        Blog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://cirrus-ci.com/" class="md-nav__link">
+        Go to App
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#google-cloud" class="md-nav__link">
+    Google Cloud
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compute-engine" class="md-nav__link">
+    Compute Engine
+  </a>
+  
+    <nav class="md-nav" aria-label="Compute Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-vm-images" class="md-nav__link">
+    Custom VM images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-support" class="md-nav__link">
+    Windows Support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#freebsd-support" class="md-nav__link">
+    FreeBSD Support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-containers-on-dedicated-vms" class="md-nav__link">
+    Docker Containers on Dedicated VMs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-scopes" class="md-nav__link">
+    Instance Scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preemptible-instances" class="md-nav__link">
+    Preemptible Instances
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-engine" class="md-nav__link">
+    Kubernetes Engine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    AWS
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    EC2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eks" class="md-nav__link">
+    EKS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure" class="md-nav__link">
+    Azure
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-container-instances" class="md-nav__link">
+    Azure Container Instances
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oracle-cloud" class="md-nav__link">
+    Oracle Cloud
+  </a>
+  
+    <nav class="md-nav" aria-label="Oracle Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-cluster" class="md-nav__link">
+    Kubernetes Cluster
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/guide/supported-computing-services.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Computing Services</h1>
+                
+                <p align="center">
+  <a href="#google-cloud">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Google Cloud Platform.svg"/>
+  </a>
+  <a href="#compute-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Compute Engine.svg"/>
+  </a>
+  <a href="#kubernetes-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Container Engine.svg"/>
+  </a>
+  <a href="#kubernetes-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Kubernetes_logo.svg" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="#aws">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/AWS.svg"/>
+  </a>
+  <a href="#ec2">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/EC2.svg"/>
+  </a>
+  <a href="#eks">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/EKS.svg"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="#azure">
+    <img style="width:128px;height:128px;" src="/assets/images/azure/Microsoft Azure.svg"/>
+  </a>
+  <a href="#azure-container-instances">
+    <img style="width:128px;height:128px;" src="/assets/images/azure/Azure Container Service.svg"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="#oracle-cloud">
+    <img style="height:128px;" src="/assets/images/oracle/oci.svg"/>
+  </a>
+  <a href="#kubernetes-cluster">
+    <img style="width:128px;height:128px;" src="/assets/images/oracle/oke.svg"/>
+  </a>
+</p>
+
+<p>For every <a href="../writing-tasks/">task</a> Cirrus CI starts a new Virtual Machine or a new Docker Container on a given compute service.
+Using a new VM or a new Docker Container each time for running tasks has many benefits:</p>
+<ul>
+<li><strong>Atomic changes to an environment where tasks are executed.</strong> Everything about a task is configured in <code>.cirrus.yml</code> file including
+  VM image version and Docker Container image version. After commiting changes to <code>.cirrus.yml</code> not only new tasks will use the new environment
+  but also outdated branches will continue using the old configuration.</li>
+<li><strong>Reproducibility.</strong> Fresh environment guarantees no corrupted artifacts or caches are presented from the previous tasks.</li>
+<li><strong>Cost efficiency.</strong> Most compute services are offering per-second pricing which makes them ideal for using with Cirrus CI. 
+  Also each task for repository can define ideal amount of CPUs and Memory specific for a nature of the task. No need to manage
+  pools of similar VMs or try to fit workloads within limits of a given Continuous Integration systems.</li>
+</ul>
+<p>To be fair there are of course some disadvantages of starting a new VM or a container for every task:</p>
+<ul>
+<li><strong>Virtual Machine Startup Speed.</strong> Starting a VM can take from a few dozen seconds to a minute or two depending on a cloud provider and
+  a particular VM image. Starting a container on the other hand just takes a few hundred milliseconds! But even a minute
+  on average for starting up VMs is not a big inconvenience in favor of more stable, reliable and more reproducible CI.</li>
+<li><strong>Cold local caches for every task execution.</strong> Many tools tend to store some caches like downloaded dependencies locally
+  to avoid downloading them again in future. Since Cirrus CI always uses fresh VMs and containers such local caches will always
+  be empty. Performance implication of empty local caches can be avoided by using Cirrus CI features like 
+  <a href="../writing-tasks/#cache-instruction">built-in caching mechanism</a>. Some tools like <a href="https://gradle.org/">Gradle</a> can 
+  even take advantages of <a href="../writing-tasks/#http-cache">built-in HTTP cache</a>!</li>
+</ul>
+<p>Please check the list of currently supported cloud compute services below.</p>
+<h2 id="google-cloud">Google Cloud<a class="headerlink" href="#google-cloud" title="Permanent link">&para;</a></h2>
+<p align="center">
+  <a href="#google-cloud">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Google Cloud Platform.svg"/>
+  </a>
+  </a>
+</p>
+
+<p>Cirrus CI can schedule tasks on several Google Cloud Compute services. In order to interact with Google Cloud APIs 
+Cirrus CI needs permissions. Creating a <a href="https://cloud.google.com/compute/docs/access/service-accounts">service account</a> 
+is a common way to safely give granular access to parts of Google Cloud Projects. </p>
+<div class="admonition warning">
+<p class="admonition-title">Isolation</p>
+<p>We do recommend to create a separate Google Cloud project for running CI builds to make sure tests are
+isolated from production data. Having a separate project also will show how much money is spent on CI and how
+efficient Cirrus CI is <img alt="😉" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f609.svg" title=":wink:" /></p>
+</div>
+<p>Once you have a Google Cloud project for Cirrus CI please create a service account by running the following command: </p>
+<div class="highlight"><pre><span></span><code>gcloud iam service-accounts create cirrus-ci <span class="se">\</span>
+    --project <span class="nv">$PROJECT_ID</span>
+</code></pre></div>
+<p>Depending on a compute service Cirrus CI will need different <a href="https://cloud.google.com/iam/docs/understanding-roles">roles</a> 
+assigned to the service account. But Cirrus CI will always need permissions to act as a service account and be able to view monitoring:</p>
+<div class="highlight"><pre><span></span><code>gcloud projects add-iam-policy-binding <span class="nv">$PROJECT_ID</span> <span class="se">\</span>
+    --member serviceAccount:cirrus-ci@<span class="nv">$PROJECT_ID</span>.iam.gserviceaccount.com <span class="se">\</span>
+    --role roles/iam.serviceAccountUser <span class="se">\</span>
+    --role roles/monitoring.viewer
+</code></pre></div>
+<p>Cirrus CI uses Google Cloud Storage to store logs and caches. In order to give Google Cloud Storage permissions
+to the service account please run:</p>
+<div class="highlight"><pre><span></span><code>gcloud projects add-iam-policy-binding <span class="nv">$PROJECT_ID</span> <span class="se">\</span>
+    --member serviceAccount:cirrus-ci@<span class="nv">$PROJECT_ID</span>.iam.gserviceaccount.com <span class="se">\</span>
+    --role roles/storage.admin
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Default Logs Retentions Period</p>
+<p>By default Cirrus CI will store logs and caches for 90 days but it can be changed by manually configuring a
+<a href="https://cloud.google.com/storage/docs/lifecycle">lifecycle rule</a> for a Google Cloud Storage bucket that Cirrus CI is using.</p>
+</div>
+<p>Now we have a service account that Cirrus CI can use! It's time to let Cirrus CI know about that fact by securely providing a
+private key for the service account. A private key can be created by running the following command:</p>
+<div class="highlight"><pre><span></span><code>gcloud iam service-accounts keys create service-account-credentials.json <span class="se">\</span>
+  --iam-account cirrus-ci@<span class="nv">$PROJECT_ID</span>.iam.gserviceaccount.com
+</code></pre></div>
+<p>At last create an <a href="../writing-tasks/#encrypted-variables">encrypted variable</a> from contents of
+<code>service-account-credentials.json</code> file and add it to the top of <code>.cirrus.yml</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gcp_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENCRYPTED[qwerty239abc]</span>
+</code></pre></div>
+<p>Now Cirrus CI can store logs and caches in Google Cloud Storage for tasks scheduled on either GCE or GKE. Please check following sections 
+with additional instructions about <a href="#compute-engine">Compute Engine</a> or <a href="#kubernetes-engine">Kubernetes Engine</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Supported Regions</p>
+<p>Cirrus CI currently supports following GCP regions: <code>us-central1</code>, <code>us-east1</code>, <code>us-east4</code>, <code>us-west1</code>, <code>us-west2</code>,
+<code>europe-west1</code>, <code>europe-west2</code>, <code>europe-west3</code> and <code>europe-west4</code>.</p>
+<p>Please <a href="../../support/">contact support</a> if you are interested in support for other regions.</p>
+</div>
+<h3 id="compute-engine">Compute Engine<a class="headerlink" href="#compute-engine" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <a href="#compute-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Compute Engine.svg"/>
+  </a>
+</p>
+
+<p>In order to schedule tasks on Google Compute Engine a service account that Cirrus CI operates via should have a necessary
+role assigned. It can be done by running a <code>gcloud</code> command:</p>
+<div class="highlight"><pre><span></span><code>gcloud projects add-iam-policy-binding <span class="nv">$PROJECT_ID</span> <span class="se">\</span>
+    --member serviceAccount:cirrus-ci@<span class="nv">$PROJECT_ID</span>.iam.gserviceaccount.com <span class="se">\</span>
+    --role roles/compute.admin
+</code></pre></div>
+<p>Now tasks can be scheduled on Compute Engine within <code>$PROJECT_ID</code> project by configuring <code>gce_instance</code> something 
+like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gce_instance</span><span class="p">:</span>
+  <span class="nt">image_project</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-os-cloud</span>
+  <span class="nt">image_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-1904-disco-v20190417</span>
+  <span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-central1-a</span>
+  <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
+  <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">40GB</span>
+  <span class="nt">disk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60</span>
+  <span class="nt">use_ssd</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span> <span class="c1"># default to false</span>
+
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./run-ci.sh</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Specify Machine Type</p>
+<p>It is possible to specify a <a href="https://cloud.google.com/compute/docs/machine-types">predefined machine type</a> via <code>type</code>
+field:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gce_instance</span><span class="p">:</span>
+  <span class="nt">image_project</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-os-cloud</span>
+  <span class="nt">image_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-1604-xenial-v20171121a</span>
+  <span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-central1-a</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">n1-standard-8</span>
+  <span class="nt">disk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+</code></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Specify Image Family</p>
+<p>It's also possible to specify image family instead of the concrete image name. Simply specify <code>image_family</code> field
+instead of <code>image_name</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gce_instance</span><span class="p">:</span>
+  <span class="nt">image_project</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-os-cloud</span>
+  <span class="nt">image_family</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-1904</span>
+</code></pre></div>
+</div>
+<h4 id="custom-vm-images">Custom VM images<a class="headerlink" href="#custom-vm-images" title="Permanent link">&para;</a></h4>
+<p>Building an immutable VM image with all necessary software pre-configured is a known best practice with many benefits.
+It makes sure environment where a task is executed is always the same and that no time is spent on useless work like
+installing a package over and over again for every single task.</p>
+<p>There are many ways how one can create a custom image for Google Compute Engine. Please refer to the <a href="https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images">official documentation</a>.
+At Cirrus Labs we are using <a href="https://www.packer.io/docs/builders/googlecompute.html">Packer</a> to automate building such
+images. An example of how we use it can be found in <a href="https://github.com/cirruslabs/cirrus-images">our public GitHub repository</a>.</p>
+<h4 id="windows-support">Windows Support<a class="headerlink" href="#windows-support" title="Permanent link">&para;</a></h4>
+<p>Google Compute Engine support Windows images and Cirrus CI can take full advantages of it by just explicitly specifying
+platform of an image like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gce_instance</span><span class="p">:</span>
+  <span class="nt">image_project</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">windows-cloud</span>
+  <span class="nt">image_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">windows-server-2016-dc-core-v20170913</span>
+  <span class="nt">platform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">windows</span>
+  <span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-central1-a</span>
+  <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
+  <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">40GB</span>
+  <span class="nt">disk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">run-ci.bat</span>
+</code></pre></div>
+<h4 id="freebsd-support">FreeBSD Support<a class="headerlink" href="#freebsd-support" title="Permanent link">&para;</a></h4>
+<p>Google Compute Engine support FreeBSD images and Cirrus CI can take full advantages of it by just explicitly specifying
+platform of an image like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gce_instance</span><span class="p">:</span>
+  <span class="nt">image_project</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">freebsd-org-cloud-dev</span>
+  <span class="nt">image_family</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">freebsd-12-1</span>
+  <span class="nt">platform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FreeBSD</span>
+  <span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-central1-a</span>
+  <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
+  <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">40GB</span>
+  <span class="nt">disk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">50</span>
+
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">printenv</span>
+</code></pre></div>
+<h4 id="docker-containers-on-dedicated-vms">Docker Containers on Dedicated VMs<a class="headerlink" href="#docker-containers-on-dedicated-vms" title="Permanent link">&para;</a></h4>
+<p>It is possible to run a container directly on a Compute Engine VM with pre-installed Docker. Simply use <code>gce_container</code>
+to specify a VM image and a Docker container to execute on the VM (<code>gce_container</code> simply extends <code>gce_instance</code> definition
+with a few additional fields):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gce_container</span><span class="p">:</span>
+  <span class="nt">image_project</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-project</span>
+  <span class="nt">image_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-custom-ubuntu-with-docker</span>
+  <span class="nt">container</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">golang:latest</span>
+  <span class="nt">additional_containers</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">redis</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">redis:3.2-alpine</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">6379</span>
+</code></pre></div>
+<p>Note that <code>gce_container</code> always runs containers in privileged mode.</p>
+<p>If your VM image has <a href="https://cloud.google.com/compute/docs/instances/enable-nested-virtualization-vm-instances">Nested Virtualization Enabled</a>
+it's possible to use KVM from the container by specifying <code>enable_nested_virtualization</code> flag. Here is an example of
+using KVM-enabled container to run a hardware accelerated Android emulator:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gce_container</span><span class="p">:</span>
+  <span class="nt">image_project</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-project</span>
+  <span class="nt">image_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-custom-ubuntu-with-docker-and-KVM</span>
+  <span class="nt">container</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cirrusci/android-sdk:29</span>
+  <span class="nt">enable_nested_virtualization</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">accel_check_script</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo chown cirrus:cirrus /dev/kvm</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">emulator -accel-check</span>
+</code></pre></div>
+<h4 id="instance-scopes">Instance Scopes<a class="headerlink" href="#instance-scopes" title="Permanent link">&para;</a></h4>
+<p>By default Cirrus CI will create Google Compute instances without any <a href="https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes">scopes</a> 
+so an instance can't access Google Cloud Storage for example. But sometimes it can be useful to give some permissions to an 
+instance by using <code>scopes</code> key of <code>gce_instance</code>.  For example, if a particular task builds Docker images and then pushes 
+them to <a href="https://cloud.google.com/container-registry/">Container Registry</a>, its configuration file can look something like:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gcp_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENCRYPTED[qwerty239abc]</span>
+
+<span class="nt">gce_instance</span><span class="p">:</span>
+  <span class="nt">image_project</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-project</span>
+  <span class="nt">image_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-custom-image-with-docker</span>
+  <span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-central1-a</span>
+  <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
+  <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">40GB</span>
+  <span class="nt">disk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./scripts/test.sh</span>
+
+<span class="nt">push_docker_task</span><span class="p">:</span>
+  <span class="nt">depends_on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test</span>
+  <span class="nt">only_if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CIRRUS_BRANCH == &quot;master&quot;</span>
+  <span class="nt">gce_instance</span><span class="p">:</span>
+    <span class="nt">scopes</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cloud-platform</span>
+  <span class="nt">push_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./scripts/push_docker.sh</span>
+</code></pre></div>
+<h4 id="preemptible-instances">Preemptible Instances<a class="headerlink" href="#preemptible-instances" title="Permanent link">&para;</a></h4>
+<p>Cirrus CI can schedule <a href="https://cloud.google.com/compute/docs/instances/preemptible">preemptible</a> instances with all price
+benefits and stability risks. But sometimes risks of an instance being preempted at any time can be tolerated. For example 
+<code>gce_instance</code> can be configured to schedule preemptible instance for non master branches like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gce_instance</span><span class="p">:</span>
+  <span class="nt">image_project</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-project</span>
+  <span class="nt">image_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-custom-image-with-docker</span>
+  <span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-central1-a</span>
+  <span class="nt">preemptible</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CIRRUS_BRANCH != &quot;master&quot;</span>
+</code></pre></div>
+<h3 id="kubernetes-engine">Kubernetes Engine<a class="headerlink" href="#kubernetes-engine" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <a href="#kubernetes-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/gcp/Container Engine.svg"/>
+  </a>
+</p>
+
+<p>Scheduling tasks on <a href="#google-compute-engine">Compute Engine</a> has one big disadvantage of waiting for an instance to
+start which usually takes around a minute. One minute is not that long but can't compete with hundreds of milliseconds
+that takes a container cluster on GKE to start a container.</p>
+<p>To start scheduling tasks on a container cluster we first need to create one using <code>gcloud</code>. Here is a recommended configuration
+of a cluster that is very similar to what is used for the managed <code>contianer</code> instances. We recommend creating a cluster with two node pools:</p>
+<ul>
+<li><code>default-pool</code> with a single node and no autoscaling for system pods required by Kubernetes.</li>
+<li><code>workers-pool</code> that will use <a href="https://cloud.google.com/compute/docs/machine-types#compute-optimized_machine_type_family">Compute-Optimized instances</a>
+  and SSD storage for better performance. This pool also will be able to scale to 0 when there are no tasks to run.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">gcloud container clusters create cirrus-ci-cluster \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--autoscaling-profile optimize-utilization \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--zone us-central1-a \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--num-nodes &quot;1&quot; \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--machine-type &quot;e2-standard-2&quot; \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--disk-type &quot;pd-standard&quot; --disk-size &quot;100&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">gcloud container node-pools create &quot;workers-pool&quot; \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--cluster cirrus-ci-cluster \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--zone &quot;us-central1-a&quot; \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--num-nodes &quot;0&quot; \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--enable-autoscaling --min-nodes &quot;0&quot; --max-nodes &quot;8&quot; \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--node-taints dedicated=system:PreferNoSchedule \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--machine-type &quot;c2-standard-30&quot; \</span>
+  <span class="l l-Scalar l-Scalar-Plain">--disk-type &quot;pd-ssd&quot; --disk-size &quot;500&quot;</span>
+</code></pre></div>
+<p>A service account that Cirrus CI operates via should be assigned with <code>container.admin</code> role that allows to administrate GKE clusters:</p>
+<div class="highlight"><pre><span></span><code>gcloud projects add-iam-policy-binding <span class="nv">$PROJECT_ID</span> <span class="se">\</span>
+    --member serviceAccount:cirrus-ci@<span class="nv">$PROJECT_ID</span>.iam.gserviceaccount.com <span class="se">\</span>
+    --role roles/container.admin
+</code></pre></div>
+<p>Done! Now after creating <code>cirrus-ci-cluster</code> cluster and having <code>gcp_credentials</code> configured tasks can be scheduled on the 
+newly created cluster like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gcp_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENCRYPTED[qwerty239abc]</span>
+
+<span class="nt">gke_container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gradle:jdk8</span>
+  <span class="nt">cluster_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cirrus-ci-cluster</span>
+  <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-central1-a</span> <span class="c1"># cluster zone or region for multi-zone clusters</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span> <span class="c1"># Kubernetes namespace to create pods in</span>
+  <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">6</span>
+  <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Using in-memory disk</p>
+<p>By default Cirrus CI mounts an <a href="https://kubernetes.io/docs/concepts/storage/volumes/#emptydir">emptyDir</a> into 
+<code>/tmp</code> path to protect the pod from unnecessary eviction by autoscaler. It is possible to switch emptyDir's medium to 
+use in-memory <code>tmpfs</code> storage instead of a default one by setting <code>use_in_memory_disk</code> field of <code>gke_container</code> to <code>true</code>
+or any other expression that uses environment variables.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Running privileged containers</p>
+<p>You can run privileged containers on your private GKE cluster by setting <code>privileged</code> field of <code>gke_container</code> to <code>true</code> 
+or any other expression that uses environment variables. <code>privileged</code> field is also available for any additional container.</p>
+<p>Here is an example of how to run docker-in-docker</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gke_container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-docker-client:latest</span>
+  <span class="nt">cluster_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-gke-cluster</span>
+  <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-west1-c</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cirrus-ci</span>
+  <span class="nt">additional_containers</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docker</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docker:dind</span>
+<span class="hll">      <span class="nt">privileged</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</span>      <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+      <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">6G</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2375</span>
+</code></pre></div>
+</div>
+<p>For a full example on leveraging this to do docker-in-docker builds on Kubernetes checkout <a href="../docker-builds-on-kubernetes/">Docker Builds on Kubernetes</a></p>
+<details class="info"><summary>Greedy instances</summary><p>Greedy instances can potentially use more CPU resources if available. Please check <a href="https://medium.com/cirruslabs/introducing-greedy-container-instances-29aad06dc2b4">this blog post</a> for more details.</p>
+</details>
+<h2 id="aws">AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h2>
+<p align="center">
+  <a href="#aws">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/AWS.svg"/>
+  </a>
+  </a>
+</p>
+
+<p>Cirrus CI can schedule tasks on several AWS services. In order to interact with AWS APIs Cirrus CI needs permissions. 
+Creating an <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html">IMA user</a> for programmatic access 
+is a common way to safely give granular access to parts of your AWS.</p>
+<p>Once you created a user for Cirrus CI you'll need to provide <em>key id</em> and <em>access key</em> itself. In order to do so
+please create an <a href="../writing-tasks/#encrypted-variables">encrypted variable</a> with the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="err">[default]</span>
+<span class="na">aws_access_key_id</span><span class="o">=</span><span class="s">...</span>
+<span class="na">aws_secret_access_key</span><span class="o">=</span><span class="s">...</span>
+</code></pre></div>
+<p>Then you'll be able to use the encrypted variable in your <code>.cirrus.yml</code> file like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">aws_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENCRYPTED[...]</span>
+
+<span class="nt">task</span><span class="p">:</span>  
+  <span class="nt">ec2_instance</span><span class="p">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="nt">task</span><span class="p">:</span>  
+  <span class="nt">eks_instance</span><span class="p">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Permissions</p>
+<p>A user that Cirrus CI will be using for orchestrating tasks on AWS should at least have access to S3 in order to store
+logs and cache artifacts. Here is a list of actions that Cirrus CI requires to store logs and artifacts:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">&quot;s3:CreateBucket&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;s3:PutLifecycleConfiguration&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+</div>
+<h3 id="ec2">EC2<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <a href="#ec2">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/EC2.svg"/>
+  </a>
+  </a>
+</p>
+
+<p>In order to schedule tasks on EC2 please make sure that IAM user that Cirrus CI is using has following permissions:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">&quot;ec2:DescribeInstances&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ec2:RunInstances&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ec2:TerminateInstances&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>Now tasks can be scheduled on EC2 by configuring <code>ec2_instance</code> something like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">ec2_instance</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ami-03790f6959fc34ef3</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">t2.micro</span>
+    <span class="nt">region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./run-ci.sh</span>
+</code></pre></div>
+<h3 id="eks">EKS<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <a href="#eks">
+    <img style="width:128px;height:128px;" src="/assets/images/aws/EKS.svg"/>
+  </a>
+  </a>
+</p>
+
+<p>Please follow instructions on how to <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html">create a EKS cluster</a>
+and <a href="https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html">add workers nodes</a> to it. And don't forget to
+add necessary permissions for the IAM user that Cirrus CI is using:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">&quot;iam:PassRole&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;eks:DescribeCluster&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;eks:CreateCluster&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;eks:DeleteCluster&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;eks:UpdateClusterVersion&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>To verify that Cirrus CI will be able to communicate with your cluster please make sure that if you are locally logged in
+as the user that Cirrus CI acts as you can successfully run the following commands and see your worker nodes up and running:</p>
+<div class="highlight"><pre><span></span><code>$: aws sts get-caller-identity
+<span class="o">{</span>
+    <span class="s2">&quot;UserId&quot;</span>: <span class="s2">&quot;...&quot;</span>,
+    <span class="s2">&quot;Account&quot;</span>: <span class="s2">&quot;...&quot;</span>,
+    <span class="s2">&quot;Arn&quot;</span>: <span class="s2">&quot;USER_USED_BY_CIRRUS_CI&quot;</span>
+<span class="o">}</span>
+$: aws eks --region <span class="nv">$REGION</span> update-kubeconfig --name <span class="nv">$CLUSTER_NAME</span>
+$: kubectl get nodes
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">EKS Access Denied</p>
+<p>If you have an issue with accessing your EKS cluster via <code>kubectl</code>, most likely you did <strong>not</strong> create the cluster
+with the user that Cirrus CI is using. The easiest way to do so is to create the cluster through AWS CLI with the
+following command:</p>
+<div class="highlight"><pre><span></span><code>$: aws sts get-caller-identity
+<span class="o">{</span>
+    <span class="s2">&quot;UserId&quot;</span>: <span class="s2">&quot;...&quot;</span>,
+    <span class="s2">&quot;Account&quot;</span>: <span class="s2">&quot;...&quot;</span>,
+    <span class="s2">&quot;Arn&quot;</span>: <span class="s2">&quot;USER_USED_BY_CIRRUS_CI&quot;</span>
+<span class="o">}</span>
+$: aws eks --region <span class="nv">$REGION</span> <span class="se">\</span>
+    create-cluster --name cirrus-ci <span class="se">\</span>
+    --role-arn ... <span class="se">\</span>
+    --resources-vpc-config <span class="nv">subnetIds</span><span class="o">=</span>...,securityGroupIds<span class="o">=</span>...
+</code></pre></div>
+</div>
+<p>Now tasks can be scheduled on EKS by configuring <code>eks_container</code> something like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">eks_container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+    <span class="nt">region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
+    <span class="nt">cluster_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cirrus-ci</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./run-ci.sh</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">S3 Access for Caching</p>
+<p>Please add <code>AmazonS3FullAccess</code> policy to the role used for creation of EKS workers (same role you put in <code>aws-auth-cm.yaml</code>
+when <a href="https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html">enabled worker nodes to join the cluster</a>).</p>
+</div>
+<details class="info"><summary>Greedy instances</summary><p>Greedy instances can potentially use more CPU resources if available. Please check <a href="https://medium.com/cirruslabs/introducing-greedy-container-instances-29aad06dc2b4">this blog post</a> for more details.</p>
+</details>
+<h2 id="azure">Azure<a class="headerlink" href="#azure" title="Permanent link">&para;</a></h2>
+<p align="center">
+  <a href="#google-cloud">
+    <img style="width:128px;height:128px;" src="/assets/images/azure/Microsoft Azure.svg"/>
+  </a>
+  </a>
+</p>
+
+<p>Cirrus CI can schedule tasks on several Azure services. In order to interact with Azure APIs 
+Cirrus CI needs permissions. First, please choose a subscription you want to use for scheduling CI tasks.
+<a href="https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade">Navigate to the Subscriptions blade within the Azure Portal</a>
+and save <code>$SUBSCRIPTION_ID</code> that we'll use below for setting up a service principle.</p>
+<p>Creating a <a href="https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli">service principal</a> 
+is a common way to safely give granular access to parts of Azure:</p>
+<div class="highlight"><pre><span></span><code>az ad sp create-for-rbac --name CirrusCI --sdk-auth <span class="se">\</span>
+  --scopes <span class="s2">&quot;/subscriptions/</span><span class="nv">$SUBSCRIPTION_ID</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>Command above will create a new service principal and will print something like:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;clientId&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;subscriptionId&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+  <span class="err">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Please also remember <code>clientId</code> from the JSON as <code>$CIRRUS_CLIENT_ID</code>. It will be used later for configuring blob storage access.</p>
+<p>Please create an <a href="../writing-tasks/#encrypted-variables">encrypted variable</a> from this output and 
+add it to the top of <code>.cirrus.yml</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">azure_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENCRYPTED[qwerty239abc]</span>
+</code></pre></div>
+<p>You also need to create a resource group that Cirrus CI will use for scheduling tasks:</p>
+<div class="highlight"><pre><span></span><code><span class="go">az group create --location eastus --name CirrusCI</span>
+</code></pre></div>
+<p>Please also allow the newly created CirrusCI principle to access blob storage in order to manage logs and caches.</p>
+<div class="highlight"><pre><span></span><code><span class="go">az role assignment create \</span>
+<span class="go">    --role &quot;Storage Blob Data Contributor&quot; \</span>
+<span class="go">    --assignee $CIRRUS_CLIENT_ID \</span>
+<span class="go">    --scope &quot;/subscriptions/$SUBSCRIPTION_ID/resourceGroups/CirrusCI&quot;</span>
+</code></pre></div>
+<p>Now Cirrus CI can interact with Azure APIs.</p>
+<h3 id="azure-container-instances">Azure Container Instances<a class="headerlink" href="#azure-container-instances" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <a href="#compute-engine">
+    <img style="width:128px;height:128px;" src="/assets/images/azure/Azure Container Service.svg"/>
+  </a>
+</p>
+
+<p><a href="https://azure.microsoft.com/en-us/services/container-instances/">Azure Container Instances (ACI)</a> is an ideal 
+candidate for running modern CI workloads. ACI allows <em>just</em> to run Linux and Windows containers without thinking about 
+underlying infrastructure.</p>
+<p>Once <code>azure_credentials</code> is configured as described above, tasks can be scheduled on ACI by configuring <code>aci_instance</code> like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">azure_container_instance</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cirrusci/windowsservercore:2016</span>
+  <span class="nt">resource_group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CirrusCI</span>
+  <span class="nt">region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">westus</span>
+  <span class="nt">platform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">windows</span>
+  <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
+  <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">12G</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">About Docker Images to use with ACI</p>
+<p>Linux-based images are usually pretty small and doesn't require much tweaking. For Windows containers ACI recommends
+to follow a <a href="https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting#container-takes-a-long-time-to-start">few basic tips</a>
+in order to reduce startup time.</p>
+</div>
+<h2 id="oracle-cloud">Oracle Cloud<a class="headerlink" href="#oracle-cloud" title="Permanent link">&para;</a></h2>
+<p align="center">
+  <a href="#oracle-cloud">
+    <img style="height:128px;" src="/assets/images/oracle/oci.svg"/>
+  </a>
+</p>
+
+<p>Cirrus CI can schedule tasks on several Oracle Cloud services. In order to interact with OCI APIs Cirrus CI needs permissions.
+Please create a user that Cirrus CI will behalf on:</p>
+<div class="highlight"><pre><span></span><code>oci iam user create --name cirrus --description <span class="s2">&quot;Cirrus CI Orchestrator&quot;</span>
+</code></pre></div>
+<p>Please configure the <code>cirrus</code> user to be able to access storage, launch instances and have access to Kubernetes clusters.
+The easiest way is to add <code>cirrus</code> user to <code>Administrators</code> group, but it's not as secure as a granular access configuration.</p>
+<p>By default, for every repository you'll start using Cirrus CI with, Cirrus will create a bucket with 90 days lifetime policy.
+In order to allow Cirrus to configure lifecycle policies please add the following policy as described in the <a href="https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usinglifecyclepolicies.htm#Service">documentation</a>.
+Here is an example of the policy for <code>us-ashburn-1</code> region:</p>
+<div class="highlight"><pre><span></span><code>Allow service objectstorage-us-ashburn-1 to manage object-family in tenancy
+</code></pre></div>
+<p>Once you created and configured <code>cirrus</code> user you'll need to provide its API key. Once you generate an API key you should
+get a <code>*.pem</code> file with the private key that will be used by Cirrus CI.</p>
+<p>Normally your config file for local use looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="err">[DEFAULT]</span>
+<span class="na">user</span><span class="o">=</span><span class="s">ocid1.user.oc1..XXX</span>
+<span class="na">fingerprint</span><span class="o">=</span><span class="s">11:22:...:99</span>
+<span class="na">tenancy</span><span class="o">=</span><span class="s">ocid1.tenancy.oc1..YYY</span>
+<span class="na">region</span><span class="o">=</span><span class="s">us-ashburn-1</span>
+<span class="na">key_file</span><span class="o">=</span><span class="s">&lt;path to your *.pem private keyfile&gt;</span>
+</code></pre></div>
+<p>For Cirrus to use, you'll need to use a different format:</p>
+<div class="highlight"><pre><span></span><code>&lt;user value&gt;
+&lt;fingerprint value&gt;
+&lt;tenancy value&gt;
+&lt;region value&gt;
+&lt;content of your *.pem private keyfile&gt;
+</code></pre></div>
+<p>This way you'll be able to create a single <a href="../writing-tasks/#encrypted-variables">encrypted variable</a> with the contents
+of the Cirrus specific credentials above.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">oracle_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENCRYPTED[qwerty239abc]</span>
+</code></pre></div>
+<h3 id="kubernetes-cluster">Kubernetes Cluster<a class="headerlink" href="#kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <a href="#kubernetes-cluster">
+    <img  style="width:128px;height:128px;" src="/assets/images/oracle/oke.svg"/>
+  </a>
+</p>
+
+<p>Please create a Kubernetes cluster and make sure <em>Kubernetes API Public Endpoint</em> is enabled for the cluster so Cirrus
+can access it. Then copy cluster id which can be used in configuring <code>oke_container</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">oke_container</span><span class="p">:</span>
+    <span class="nt">cluster_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ocid1.cluster.oc1.iad.xxxxxx</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">golang:latest</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./run-ci.sh</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Ampere A1 Support</p>
+<p>The cluster can utilize <a href="https://www.oracle.com/cloud/compute/arm/">Oracle's Ampere A1</a> Arm instances in order to
+run <code>arm64</code> CI workloads!</p>
+</div>
+<details class="info"><summary>Greedy instances</summary><p>Greedy instances can potentially use more CPU resources if available. Please check <a href="https://medium.com/cirruslabs/introducing-greedy-container-instances-29aad06dc2b4">this blog post</a> for more details.</p>
+</details>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" title="Back to top" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../custom-vms/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Custom VMs
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../build-life/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Life of a Build
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            © Cirrus Labs 2017-present
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs Insiders
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/cirrus_labs" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.4c32c4e3.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c46528a6.min.js"></script>
+      
+    
+  </body>
+</html>

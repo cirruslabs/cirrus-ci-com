@@ -1,0 +1,2230 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cirrus CI is a modern Continuous Integration system built for the era of cloud computing. Cirrus CI supports Linux, Windows, macOS and FreeBSD environments as well as various cloud computing services like Kubernetes, Google Cloud, AWS and Azure.
+">
+      
+      
+      
+        <meta name="author" content="Cirrus Labs">
+      
+      
+        <link rel="canonical" href="https://cirrus-ci.org/examples/">
+      
+      
+        
+      
+      <link rel="icon" href="../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.4+insiders-2.7.2">
+    
+    
+      
+        <title>Examples - Cirrus CI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.48946aae.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.77b964be.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/landing.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <script>function __scope(t,e=".."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#examples" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cirrus CI" class="md-header__button md-logo" aria-label="Cirrus CI" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cirrus CI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Examples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/cirruslabs/cirrus-ci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../features/" class="md-tabs__link">
+      Features
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guide/quick-start/" class="md-tabs__link">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Examples
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../pricing/" class="md-tabs__link">
+      Pricing
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../support/" class="md-tabs__link">
+      Support
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://medium.com/cirruslabs" class="md-tabs__link">
+      Blog
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://cirrus-ci.com/" class="md-tabs__link">
+      Go to App
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cirrus CI" class="md-nav__button md-logo" aria-label="Cirrus CI" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Cirrus CI
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/cirruslabs/cirrus-ci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          User Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/quick-start/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/writing-tasks/" class="md-nav__link">
+        Writing Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/programming-tasks/" class="md-nav__link">
+        Programming Tasks in Starlark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/tips-and-tricks/" class="md-nav__link">
+        Configuration Tips and Tricks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_5" type="checkbox" id="__nav_3_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_5">
+          Execution Environment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Execution Environment" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Execution Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/linux/" class="md-nav__link">
+        Linux Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/windows/" class="md-nav__link">
+        Windows Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/macOS/" class="md-nav__link">
+        macOS VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/FreeBSD/" class="md-nav__link">
+        FreeBSD VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/persistent-workers/" class="md-nav__link">
+        Persistent Workers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/docker-builder-vm/" class="md-nav__link">
+        Docker Builder on VM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/docker-builds-on-kubernetes/" class="md-nav__link">
+        Docker Builds on GKE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/docker-pipe/" class="md-nav__link">
+        Docker Pipe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/custom-vms/" class="md-nav__link">
+        Custom VMs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/supported-computing-services/" class="md-nav__link">
+        Computing Services
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/build-life/" class="md-nav__link">
+        Life of a Build
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/notifications/" class="md-nav__link">
+        Notifications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Legal
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Legal" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Legal
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal/privacy/" class="md-nav__link">
+        Privacy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal/terms/" class="md-nav__link">
+        Terms of Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Examples
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    Android
+  </a>
+  
+    <nav class="md-nav" aria-label="Android">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#android-lint" class="md-nav__link">
+    Android Lint
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bazel" class="md-nav__link">
+    Bazel
+  </a>
+  
+    <nav class="md-nav" aria-label="Bazel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remote-cache" class="md-nav__link">
+    Remote Cache
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C++
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crystal" class="md-nav__link">
+    Crystal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elixir" class="md-nav__link">
+    Elixir
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erlang" class="md-nav__link">
+    Erlang
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flutter" class="md-nav__link">
+    Flutter
+  </a>
+  
+    <nav class="md-nav" aria-label="Flutter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flutter-web" class="md-nav__link">
+    Flutter Web
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go" class="md-nav__link">
+    Go
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#golangci-lint" class="md-nav__link">
+    GolangCI Lint
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradle" class="md-nav__link">
+    Gradle
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    Caching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-cache" class="md-nav__link">
+    Build Cache
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#junit" class="md-nav__link">
+    JUnit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maven" class="md-nav__link">
+    Maven
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    MySQL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    Node
+  </a>
+  
+    <nav class="md-nav" aria-label="Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npm" class="md-nav__link">
+    npm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn" class="md-nav__link">
+    Yarn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn-2" class="md-nav__link">
+    Yarn 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    Python
+  </a>
+  
+    <nav class="md-nav" aria-label="Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-pypi-packages" class="md-nav__link">
+    Building PyPI Packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linting" class="md-nav__link">
+    Linting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unittest-annotations" class="md-nav__link">
+    Unittest Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qodana" class="md-nav__link">
+    Qodana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-assets" class="md-nav__link">
+    Release Assets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ruby" class="md-nav__link">
+    Ruby
+  </a>
+  
+    <nav class="md-nav" aria-label="Ruby">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rspec-and-rubocop-annotations" class="md-nav__link">
+    RSpec and RuboCop Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rust" class="md-nav__link">
+    Rust
+  </a>
+  
+    <nav class="md-nav" aria-label="Rust">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rust-nightly" class="md-nav__link">
+    Rust Nightly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xclogparser" class="md-nav__link">
+    XCLogParser
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pricing/" class="md-nav__link">
+        Pricing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../support/" class="md-nav__link">
+        Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://medium.com/cirruslabs" class="md-nav__link">
+        Blog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://cirrus-ci.com/" class="md-nav__link">
+        Go to App
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    Android
+  </a>
+  
+    <nav class="md-nav" aria-label="Android">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#android-lint" class="md-nav__link">
+    Android Lint
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bazel" class="md-nav__link">
+    Bazel
+  </a>
+  
+    <nav class="md-nav" aria-label="Bazel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remote-cache" class="md-nav__link">
+    Remote Cache
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C++
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crystal" class="md-nav__link">
+    Crystal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elixir" class="md-nav__link">
+    Elixir
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erlang" class="md-nav__link">
+    Erlang
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flutter" class="md-nav__link">
+    Flutter
+  </a>
+  
+    <nav class="md-nav" aria-label="Flutter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flutter-web" class="md-nav__link">
+    Flutter Web
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go" class="md-nav__link">
+    Go
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#golangci-lint" class="md-nav__link">
+    GolangCI Lint
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradle" class="md-nav__link">
+    Gradle
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    Caching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-cache" class="md-nav__link">
+    Build Cache
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#junit" class="md-nav__link">
+    JUnit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maven" class="md-nav__link">
+    Maven
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    MySQL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    Node
+  </a>
+  
+    <nav class="md-nav" aria-label="Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npm" class="md-nav__link">
+    npm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn" class="md-nav__link">
+    Yarn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn-2" class="md-nav__link">
+    Yarn 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    Python
+  </a>
+  
+    <nav class="md-nav" aria-label="Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-pypi-packages" class="md-nav__link">
+    Building PyPI Packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linting" class="md-nav__link">
+    Linting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unittest-annotations" class="md-nav__link">
+    Unittest Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qodana" class="md-nav__link">
+    Qodana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-assets" class="md-nav__link">
+    Release Assets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ruby" class="md-nav__link">
+    Ruby
+  </a>
+  
+    <nav class="md-nav" aria-label="Ruby">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rspec-and-rubocop-annotations" class="md-nav__link">
+    RSpec and RuboCop Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rust" class="md-nav__link">
+    Rust
+  </a>
+  
+    <nav class="md-nav" aria-label="Rust">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rust-nightly" class="md-nav__link">
+    Rust Nightly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xclogparser" class="md-nav__link">
+    XCLogParser
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/examples.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
+<p>Here you can find example configurations per different programming languages/frameworks.</p>
+<h2 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h2>
+<p>Cirrus CI has a <a href="https://hub.docker.com/r/cirrusci/android-sdk/">set of Docker images ready for Android development</a>. 
+If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI. For those
+images <code>.cirrus.yml</code> configuration file can look like:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cirrusci/android-sdk:29</span>
+
+<span class="nt">check_android_task</span><span class="p">:</span>
+  <span class="nt">check_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./gradlew check connectedCheck</span>
+</code></pre></div>
+<p>Or like this if a running emulator is needed for the tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cirrusci/android-sdk:29</span>
+  <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
+  <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10G</span>
+
+<span class="nt">check_android_task</span><span class="p">:</span>
+  <span class="nt">create_device_script</span><span class="p">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">echo no | avdmanager create avd --force</span>
+        <span class="l l-Scalar l-Scalar-Plain">-n test</span>
+        <span class="l l-Scalar l-Scalar-Plain">-k &quot;system-images;android-29;default;armeabi-v7a&quot;</span>
+  <span class="nt">start_emulator_background_script</span><span class="p">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">$ANDROID_HOME/emulator/emulator</span>
+        <span class="l l-Scalar l-Scalar-Plain">-avd test</span>
+        <span class="l l-Scalar l-Scalar-Plain">-no-audio</span>
+        <span class="l l-Scalar l-Scalar-Plain">-no-window</span>
+  <span class="nt">wait_for_emulator_script</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">adb wait-for-device</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">adb shell input keyevent 82</span>
+  <span class="nt">check_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./gradlew check connectedCheck</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Please don't forget to setup <a href="#build-cache">Remote Build Cache</a> for your Gradle project. Or at least <a href="#gradle-caching">basic folder caching</a>.</p>
+</div>
+<h3 id="android-lint">Android Lint<a class="headerlink" href="#android-lint" title="Permanent link">&para;</a></h3>
+<p>The Cirrus CI annotator supports providing inline reports on PRs and can parse Android Lint reports. Here is an example of an <em>Android Lint</em>
+task that you can add to your <code>.cirrus.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Android Lint</span>
+  <span class="nt">lint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./gradlew lintDebug</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">android-lint_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;**/reports/lint-results-debug.xml&quot;</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/xml</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">android-lint</span>
+</code></pre></div>
+<h2 id="bazel">Bazel<a class="headerlink" href="#bazel" title="Permanent link">&para;</a></h2>
+<p>Bazel Team provides a <a href="https://l.gcr.io/google/bazel">set of official Docker images with Bazel pre-installed</a>. Here is
+an example of how <code>.cirrus.yml</code> can look like for Bazel:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">l.gcr.io/google/bazel:latest</span>
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">build_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bazel build //...</span>
+</code></pre></div>
+<p>If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI.</p>
+<h3 id="remote-cache">Remote Cache<a class="headerlink" href="#remote-cache" title="Permanent link">&para;</a></h3>
+<p>Cirrus CI has <a href="../guide/writing-tasks/#http-cache">built-in HTTP Cache</a> which is compatible with Bazel's <a href="https://github.com/bazelbuild/bazel/blob/master/src/main/java/com/google/devtools/build/lib/remote/README.md">remote cache</a>.</p>
+<p>Here is an example of how Cirrus CI HTTP Cache can be used with Bazel:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">l.gcr.io/google/bazel:latest</span>
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">build_script</span><span class="p">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">bazel build</span>
+      <span class="l l-Scalar l-Scalar-Plain">--spawn_strategy=sandboxed</span>
+      <span class="l l-Scalar l-Scalar-Plain">--strategy=Javac=sandboxed</span>
+      <span class="l l-Scalar l-Scalar-Plain">--genrule_strategy=sandboxed</span>
+      <span class="l l-Scalar l-Scalar-Plain">--remote_http_cache=http://$CIRRUS_HTTP_CACHE_HOST</span>
+      <span class="l l-Scalar l-Scalar-Plain">//...</span>
+</code></pre></div>
+<h2 id="c">C++<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
+<p>Official <a href="https://hub.docker.com/_/gcc/">GCC Docker images</a> can be used for builds. Here is an example of a <code>.cirrus.yml</code> that runs tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gcc:latest</span>
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">tests_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">make tests</span>
+</code></pre></div>
+<h2 id="crystal">Crystal<a class="headerlink" href="#crystal" title="Permanent link">&para;</a></h2>
+<p>Official <a href="https://hub.docker.com/r/crystallang/crystal/">Crystal Docker images</a> can be used for builds. Here is an example
+of a <code>.cirrus.yml</code> that caches dependencies and runs tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">crystallang/crystal:latest</span>
+
+<span class="nt">spec_task</span><span class="p">:</span>
+  <span class="nt">shard_cache</span><span class="p">:</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat shard.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">shards install</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lib</span>
+  <span class="nt">spec_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">crystal spec</span>
+</code></pre></div>
+<h2 id="elixir">Elixir<a class="headerlink" href="#elixir" title="Permanent link">&para;</a></h2>
+<p>Official <a href="https://hub.docker.com/_/elixir/">Elixir Docker images</a> can be used for builds. Here is an example of a <code>.cirrus.yml</code> that runs tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">elixir:latest</span>
+  <span class="nt">mix_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">deps</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat mix.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mix deps.get</span>
+  <span class="nt">compile_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mix compile</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mix test</span>
+</code></pre></div>
+<h2 id="erlang">Erlang<a class="headerlink" href="#erlang" title="Permanent link">&para;</a></h2>
+<p>Official <a href="https://hub.docker.com/_/erlang/">Erlang Docker images</a> can be used for builds. Here is an example of a <code>.cirrus.yml</code> that runs tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">erlang:latest</span>
+  <span class="nt">rebar3_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">_build</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat rebar.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rebar3 compile --deps_only</span>
+  <span class="nt">compile_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rebar3 compile</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rebar3 ct</span>
+</code></pre></div>
+<h2 id="flutter">Flutter<a class="headerlink" href="#flutter" title="Permanent link">&para;</a></h2>
+<p>Cirrus CI provides a <a href="https://hub.docker.com/r/cirrusci/flutter/">set of Docker images with Flutter and Dart SDK pre-installed</a>.
+Here is an example of how <code>.cirrus.yml</code> can be written for Flutter:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cirrusci/flutter:latest</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">pub_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~/.pub-cache</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">flutter test -machine &gt; report.json</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">report_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">report.json</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">flutter</span>
+</code></pre></div>
+<p>If these images are not the right fit for your project you can always use any custom Docker image with Cirrus CI.</p>
+<h3 id="flutter-web">Flutter Web<a class="headerlink" href="#flutter-web" title="Permanent link">&para;</a></h3>
+<p><a href="https://hub.docker.com/r/cirrusci/flutter/">Our Docker images with Flutter and Dart SDK pre-installed</a> have special <code>*-web</code> tags
+with <a href="https://www.chromium.org/">Chromium</a> pre-installed. You can use these tags to run Flutter Web </p>
+<p>First define a new <code>chromium</code> platform in your <code>dart_test.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">define_platforms</span><span class="p">:</span>
+  <span class="nt">chromium</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Chromium</span>
+    <span class="nt">extends</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">chrome</span>
+    <span class="nt">settings</span><span class="p">:</span>
+      <span class="nt">arguments</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">--no-sandbox</span>
+      <span class="nt">executable</span><span class="p">:</span>
+        <span class="nt">linux</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">chromium</span>
+</code></pre></div>
+<p>Now you'll be able to run tests targeting web via <code>pub run test test -p chromium</code></p>
+<h2 id="go">Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h2>
+<p>The best way to test Go projects is by using <a href="https://hub.docker.com/_/golang/">official Go Docker images</a>. Here is
+an example of how <code>.cirrus.yml</code> can look like for a project using Go Modules:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">golang:latest</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">modules_cache</span><span class="p">:</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat go.sum</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$GOPATH/pkg/mod</span>
+  <span class="nt">get_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">go get ./...</span>
+  <span class="nt">build_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">go build ./...</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">go test ./...</span>
+</code></pre></div>
+<h2 id="golangci-lint">GolangCI Lint<a class="headerlink" href="#golangci-lint" title="Permanent link">&para;</a></h2>
+<p>We highly recommend to configure some sort of linting for your Go project. One of the options is <a href="https://github.com/golangci/golangci-lint">GolangCI Lint</a>.
+The Cirrus CI annotator supports providing inline reports on PRs and can parse GolangCI Lint reports. Here is an example of a <em>GolangCI Lint</em>
+task that you can add to your <code>.cirrus.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GolangCI Lint</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">golangci/golangci-lint:latest</span>
+  <span class="nt">run_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">golangci-lint run -v --out-format json &gt; lint-report.json</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">golangci_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lint-report.json</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/json</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">golangci</span>
+</code></pre></div>
+<h2 id="gradle">Gradle<a class="headerlink" href="#gradle" title="Permanent link">&para;</a></h2>
+<p>We recommend use of the <a href="https://hub.docker.com/_/gradle/">official Gradle Docker containers</a> since they have Gradle specific configurations already set up. For example, standard Java containers don't have 
+a pre-configured user and as a result don't have <code>HOME</code> environment variable presented which makes Gradle complain.</p>
+<h3 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h3>
+<p>To preserve caches between Gradle runs simply add a <a href="../guide/writing-tasks/#cache-instruction">cache instruction</a> as shown below.
+The trick here is to clean up <code>~/.gradle/caches</code> folder in the very end of a build. Gradle creates some unique nondeterministic
+files in <code>~/.gradle/caches</code> folder on every run which makes Cirrus CI re-upload the cache <em>every time</em>. This way, you get faster builds!</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gradle:jdk8</span>
+
+<span class="nt">check_task</span><span class="p">:</span>
+  <span class="nt">gradle_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~/.gradle/caches</span>
+  <span class="nt">check_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gradle check</span>
+  <span class="nt">cleanup_before_cache_script</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rm -rf ~/.gradle/caches/$GRADLE_VERSION/</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rm -rf ~/.gradle/caches/transforms-1</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rm -rf ~/.gradle/caches/journal-1</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rm -rf ~/.gradle/caches/jars-3/*/buildSrc.jar</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">find ~/.gradle/caches/ -name &quot;*.lock&quot; -type f -delete</span>
+</code></pre></div>
+<h3 id="build-cache">Build Cache<a class="headerlink" href="#build-cache" title="Permanent link">&para;</a></h3>
+<p>Here is how <a href="../guide/writing-tasks/#http-cache">HTTP Cache</a> can be used with Gradle simply by adding following lines to <code>settings.gradle</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ext</span><span class="o">.</span><span class="na">isCiServer</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getenv</span><span class="o">().</span><span class="na">containsKey</span><span class="o">(</span><span class="s2">&quot;CIRRUS_CI&quot;</span><span class="o">)</span>
+<span class="n">ext</span><span class="o">.</span><span class="na">isMasterBranch</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getenv</span><span class="o">()[</span><span class="s2">&quot;CIRRUS_BRANCH&quot;</span><span class="o">]</span> <span class="o">==</span> <span class="s2">&quot;master&quot;</span>
+<span class="n">ext</span><span class="o">.</span><span class="na">buildCacheHost</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getenv</span><span class="o">().</span><span class="na">getOrDefault</span><span class="o">(</span><span class="s2">&quot;CIRRUS_HTTP_CACHE_HOST&quot;</span><span class="o">,</span> <span class="s2">&quot;localhost:12321&quot;</span><span class="o">)</span>
+
+<span class="n">buildCache</span> <span class="o">{</span>
+  <span class="n">local</span> <span class="o">{</span>
+    <span class="n">enabled</span> <span class="o">=</span> <span class="o">!</span><span class="n">isCiServer</span>
+  <span class="o">}</span>
+  <span class="n">remote</span><span class="o">(</span><span class="n">HttpBuildCache</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://${buildCacheHost}/&quot;</span>
+    <span class="n">enabled</span> <span class="o">=</span> <span class="n">isCiServer</span>
+    <span class="n">push</span> <span class="o">=</span> <span class="n">isMasterBranch</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>If your project uses a <code>buildSrc</code> directory, the build cache configuration should also be applied to <code>buildSrc/settings.gradle</code>.</p>
+<p>To do this, put the build cache configuration above into a separate <code>gradle/buildCacheSettings.gradle</code> file, then apply it to both your <code>settings.gradle</code> and <code>buildSrc/settings.gradle</code>.</p>
+<p>In <code>settings.gradle</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">apply</span> <span class="nl">from:</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">settingsDir</span><span class="o">,</span> <span class="s1">&#39;gradle/buildCacheSettings.gradle&#39;</span><span class="o">)</span>
+</code></pre></div>
+<p>In <code>buildSrc/settings.gradle</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">apply</span> <span class="nl">from:</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">settingsDir</span><span class="o">,</span> <span class="s1">&#39;../gradle/buildCacheSettings.gradle&#39;</span><span class="o">)</span>
+</code></pre></div>
+<p>Please make sure you are running Gradle commands with <code>--build-cache</code> flag or have <code>org.gradle.caching</code> enabled in <code>gradle.properties</code> file.
+Here is an example of a <code>gradle.properties</code> file that we use internally for all Gradle projects:</p>
+<div class="highlight"><pre><span></span><code><span class="na">org.gradle.daemon</span><span class="o">=</span><span class="s">true</span>
+<span class="na">org.gradle.caching</span><span class="o">=</span><span class="s">true</span>
+<span class="na">org.gradle.parallel</span><span class="o">=</span><span class="s">true</span>
+<span class="na">org.gradle.configureondemand</span><span class="o">=</span><span class="s">true</span>
+<span class="na">org.gradle.jvmargs</span><span class="o">=</span><span class="s">-Dfile.encoding=UTF-8</span>
+</code></pre></div>
+<h2 id="junit">JUnit<a class="headerlink" href="#junit" title="Permanent link">&para;</a></h2>
+<p>Here is a <code>.cirrus.yml</code> that, parses and uploads JUnit reports at the end of the build:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">junit_test_task</span><span class="p">:</span>
+  <span class="nt">junit_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;replace this comment with instructions to run the test suites&gt;</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">junit_result_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;**/test-results/**.xml&quot;</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">junit</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/xml</span>
+</code></pre></div>
+<p>If it is running on a pull request, annotations will also be displayed in-line.</p>
+<h2 id="maven">Maven<a class="headerlink" href="#maven" title="Permanent link">&para;</a></h2>
+<p>Official <a href="https://hub.docker.com/_/maven/">Maven Docker images</a> can be used for building and testing Maven projects:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Cirrus CI</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">maven:latest</span>
+  <span class="nt">maven_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~/.m2</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mvn test -B</span>
+</code></pre></div>
+<h2 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h2>
+<p>The <a href="../guide/writing-tasks/#additional-containers">Additional Containers feature</a> makes it super simple to run the same Docker
+MySQL image as you might be running in production for your application. Getting a running instance of the latest GA 
+version of MySQL can used with the following six lines in your <code>.cirrus.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">golang:latest</span>
+<span class="hll">  <span class="nt">additional_containers</span><span class="p">:</span>
+</span><span class="hll">    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql</span>
+</span><span class="hll">      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql:latest</span>
+</span><span class="hll">      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
+</span><span class="hll">      <span class="nt">env</span><span class="p">:</span>
+</span><span class="hll">        <span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+</span></code></pre></div>
+<p>With the configuration above MySQL will be available on <code>localhost:3306</code>. Use empty password to login as <code>root</code> user. </p>
+<h2 id="node">Node<a class="headerlink" href="#node" title="Permanent link">&para;</a></h2>
+<p>Official <a href="https://hub.docker.com/_/node/">NodeJS Docker images</a> can be used for building and testing Node.JS applications.</p>
+<h3 id="npm">npm<a class="headerlink" href="#npm" title="Permanent link">&para;</a></h3>
+<p>Here is an example of a <code>.cirrus.yml</code> that caches <code>node_modules</code> based on contents of <code>package-lock.json</code> file and runs tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">node_modules_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat package-lock.json</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npm ci</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npm test</span>
+</code></pre></div>
+<h3 id="yarn">Yarn<a class="headerlink" href="#yarn" title="Permanent link">&para;</a></h3>
+<p>Here is an example of a <code>.cirrus.yml</code> that caches <code>node_modules</code> based on the contents of a <code>yarn.lock</code> file and runs tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">node_modules_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node_modules</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat yarn.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn install</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+</code></pre></div>
+<h3 id="yarn-2">Yarn 2<a class="headerlink" href="#yarn-2" title="Permanent link">&para;</a></h3>
+<p>Yarn 2 (also known as Yarn Berry), has a different package cache location (<code>.yarn/cache</code>).
+To run tests, it would look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node:latest</span>
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">yarn_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.yarn/cache</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat yarn.lock</span>
+  <span class="nt">install_script</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">yarn set version berry</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">yarn install</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yarn run test</span>
+</code></pre></div>
+<h2 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
+<p>Official <a href="https://hub.docker.com/_/python/">Python Docker images</a> can be used for builds. Here is an example of a <code>.cirrus.yml</code> 
+that caches installed packages based on contents of <code>requirements.txt</code> and runs <code>pytest</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python:slim</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">pip_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~/.cache/pip</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">echo $PYTHON_VERSION &amp;&amp; cat requirements.txt</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pytest</span>
+</code></pre></div>
+<h3 id="building-pypi-packages">Building PyPI Packages<a class="headerlink" href="#building-pypi-packages" title="Permanent link">&para;</a></h3>
+<p>Also using the Python Docker images, you can run tests if you are making packages for <a href="https://pypi.org">PyPI</a>. Here is an example <code>.cirrus.yml</code> for doing so:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python:slim</span>
+
+<span class="nt">build_package_test_task</span><span class="p">:</span>
+  <span class="nt">pip_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~/.cache/pip</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">echo $PYTHON_VERSION</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3 -m pip install --upgrade setuptools wheel</span>
+  <span class="nt">build_package_test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3 setup.py sdist bdist_wheel</span>
+</code></pre></div>
+<h3 id="linting">Linting<a class="headerlink" href="#linting" title="Permanent link">&para;</a></h3>
+<p>You can easily set up linting with Cirrus CI and flake8, here is an example <code>.cirrus.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lint_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">alpine/flake8:latest</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">flake8 *.py</span>
+</code></pre></div>
+<h3 id="unittest-annotations"><code>Unittest</code> Annotations<a class="headerlink" href="#unittest-annotations" title="Permanent link">&para;</a></h3>
+<p>Python Unittest reports are supported by <a href="https://medium.com/cirruslabs/github-annotations-support-227d179cde31">Cirrus CI Annotations</a>.
+This way you can see what tests are failing without leaving the pull request you are reviewing! Here is an example
+of a <code>.cirrus.yml</code> that produces and stores <code>Unittest</code> reports:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">unittest_task</span><span class="p">:</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python:slim</span>
+  <span class="nt">install_dependencies_script</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">pip3 install unittest_xml_reporting</span>
+  <span class="nt">run_tests_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3 -m xmlrunner tests</span>
+  <span class="c1"># replace &#39;tests&#39; with the module,</span>
+  <span class="c1"># unittest.TestCase, or unittest.TestSuite</span>
+  <span class="c1"># that the tests are in</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">upload_results_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./*.xml</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">junit</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/xml</span>
+</code></pre></div>
+<p>Now you should get annotations for your test results.</p>
+<h2 id="qodana">Qodana<a class="headerlink" href="#qodana" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/JetBrains/Qodana">Qodana by JetBrains</a> is a code quality monitoring tool that identifies and suggests fixes for bugs,
+security vulnerabilities, duplications, and imperfections. It brings all the smart features you love in the JetBrains IDEs.</p>
+<p>Here is an example of <code>.cirrus.yml</code> configuration file which will save Qodana's report as an artifact, will parse it and
+report as <a href="../guide/writing-tasks/#artifact-parsing">annotations</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Qodana</span>
+  <span class="nt">container</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jetbrains/qodana:latest</span>
+  <span class="nt">env</span><span class="p">:</span>
+    <span class="nt">CIRRUS_WORKING_DIR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/data/project</span>
+  <span class="nt">generate_report_script</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/opt/idea/bin/entrypoint --save-report --report-dir=report</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">results_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;report/results/result-allProblems.json&quot;</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">qodana</span>
+</code></pre></div>
+<h2 id="release-assets">Release Assets<a class="headerlink" href="#release-assets" title="Permanent link">&para;</a></h2>
+<p>Cirrus CI doesn't provide a built-in functionality to upload artifacts on a GitHub release but this functionality can be
+added via a script. For a release, Cirrus CI will provide <code>CIRRUS_RELEASE</code> environment variable along with <code>CIRRUS_TAG</code> 
+environment variable. <code>CIRRUS_RELEASE</code> indicates release id which can be used to upload assets.</p>
+<p>Cirrus CI only requires write access to Check API and doesn't require write access to repository contents because of security 
+reasons. That's why you need to <a href="https://github.com/settings/tokens/new">create a personal access token</a> with full access
+to <code>repo</code> scope. Once an access token is created, please <a href="../guide/writing-tasks/#encrypted-variables">create an encrypted variable</a> 
+from it and save it to <code>.cirrus.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span>
+  <span class="nt">GITHUB_TOKEN</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ENCRYPTED[qwerty]</span>
+</code></pre></div>
+<p>Now you can use a script to upload your assets:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$CIRRUS_RELEASE</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Not a release. No need to deploy!&quot;</span>
+  <span class="nb">exit</span> <span class="m">0</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$GITHUB_TOKEN</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Please provide GitHub access token via GITHUB_TOKEN environment variable!&quot;</span>
+  <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">file_content_type</span><span class="o">=</span><span class="s2">&quot;application/octet-stream&quot;</span>
+<span class="nv">files_to_upload</span><span class="o">=(</span>
+  <span class="c1"># relative paths of assets to upload</span>
+<span class="o">)</span>
+
+<span class="k">for</span> fpath <span class="k">in</span> <span class="nv">$files_to_upload</span>
+<span class="k">do</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Uploading </span><span class="nv">$fpath</span><span class="s2">...&quot;</span>
+  <span class="nv">name</span><span class="o">=</span><span class="k">$(</span>basename <span class="s2">&quot;</span><span class="nv">$fpath</span><span class="s2">&quot;</span><span class="k">)</span>
+  <span class="nv">url_to_upload</span><span class="o">=</span><span class="s2">&quot;https://uploads.github.com/repos/</span><span class="nv">$CIRRUS_REPO_FULL_NAME</span><span class="s2">/releases/</span><span class="nv">$CIRRUS_RELEASE</span><span class="s2">/assets?name=</span><span class="nv">$name</span><span class="s2">&quot;</span>
+  curl -X POST <span class="se">\</span>
+    --data-binary @<span class="nv">$fpath</span> <span class="se">\</span>
+    --header <span class="s2">&quot;Authorization: token </span><span class="nv">$GITHUB_TOKEN</span><span class="s2">&quot;</span> <span class="se">\</span>
+    --header <span class="s2">&quot;Content-Type: </span><span class="nv">$file_content_type</span><span class="s2">&quot;</span> <span class="se">\</span>
+    <span class="nv">$url_to_upload</span>
+<span class="k">done</span>
+</code></pre></div>
+<h2 id="ruby">Ruby<a class="headerlink" href="#ruby" title="Permanent link">&para;</a></h2>
+<p>Official <a href="https://hub.docker.com/_/ruby/">Ruby Docker images</a> can be used for builds.
+Here is an example of a <code>.cirrus.yml</code> that caches installed gems based on Ruby version,
+contents of <code>Gemfile.lock</code>, and runs <code>rspec</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ruby:latest</span>
+
+<span class="nt">rspec_task</span><span class="p">:</span>
+  <span class="nt">bundle_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/local/bundle</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo $RUBY_VERSION</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat Gemfile.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle install</span>
+  <span class="nt">rspec_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec rspec --format json --out rspec.json</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">rspec_report_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rspec.json</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/json</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rspec</span>
+</code></pre></div>
+<details class="tip"><summary>Repositories without <code>Gemfile.lock</code></summary><p>When you are not committing <code>Gemfile.lock</code> (in Ruby gems repositories, for example)
+you can run <code>bundle install</code> (or <code>bundle update</code>) in <code>install_script</code>
+instead of <code>populate_script</code> in <code>bundle_cache</code>. Cirrus Agent is clever enough to re-upload
+cache entry only if cached folder has been changed during task execution.
+Here is an example of a <code>.cirrus.yml</code> that always runs <code>bundle install</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ruby:latest</span>
+
+<span class="nt">rspec_task</span><span class="p">:</span>
+  <span class="nt">bundle_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/local/bundle</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo $RUBY_VERSION</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat Gemfile</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat *.gemspec</span>
+  <span class="nt">install_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle install</span> <span class="c1"># or `update` for the freshest bundle</span>
+  <span class="nt">rspec_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec rspec</span>
+</code></pre></div>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Test Parallelization</p>
+<p>It's super easy to add intelligent test splitting by using <a href="https://knapsackpro.com/">Knapsack Pro</a> and <a href="../guide/writing-tasks/#matrix-modification">matrix modification</a>.
+After <a href="https://docs.knapsackpro.com/knapsack_pro-ruby/guide/">setting up Knapsack Pro gem</a> simply add sharding like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">task</span><span class="p">:</span>
+  <span class="nt">matrix</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rspec (shard 1)</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rspec (shard 2)</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rspec (shard 3)</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rspec (shard 4)</span>
+  <span class="nt">bundle_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/local/bundle</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat Gemfile.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle install</span>
+  <span class="nt">rspec_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec rake knapsack_pro:rspec</span>
+</code></pre></div>
+<p>Which will create four shards that will theoretically <strong>run tests 4x faster</strong> by equally splitting all tests between 
+these four shards.</p>
+</div>
+<h3 id="rspec-and-rubocop-annotations">RSpec and RuboCop Annotations<a class="headerlink" href="#rspec-and-rubocop-annotations" title="Permanent link">&para;</a></h3>
+<p>Cirrus CI natively supports <a href="https://rspec.info/">RSpec</a> and <a href="https://rubocop.org/">RuboCop</a> machine-parsable JSON reports.</p>
+<p>To get behavior-driven test annotations, simply generate a <code>rspec</code> artifact from your lint task:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ruby:latest</span>
+
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RSpec</span>
+  <span class="nt">bundle_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/local/bundle</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo $RUBY_VERSION</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat Gemfile.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle install</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec rspec --format json --out rspec.json</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">rspec_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rspec.json</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/json</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rspec</span>
+</code></pre></div>
+<p>Generate a <code>rubocop</code> artifact to quickly gain context for linter/formatter annotations:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ruby:latest</span>
+
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RuboCop</span>
+  <span class="nt">bundle_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/local/bundle</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo $RUBY_VERSION</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat Gemfile.lock</span>
+    <span class="nt">populate_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle install</span>
+  <span class="nt">script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec rubocop --format json --out rubocop.json</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">rubocop_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rubocop.json</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/json</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rubocop</span>
+</code></pre></div>
+<h2 id="rust">Rust<a class="headerlink" href="#rust" title="Permanent link">&para;</a></h2>
+<p>Official <a href="https://hub.docker.com/_/rust/">Rust Docker images</a> can be used for builds. Here is a basic example of <code>.cirrus.yml</code> 
+that caches crates in <code>$CARGO_HOME</code> based on contents of <code>Cargo.lock</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">container</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rust:latest</span>
+
+<span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">registry_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CARGO_HOME/registry</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat Cargo.lock</span>
+  <span class="nt">target_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">target</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rustc --version</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat Cargo.lock</span>
+  <span class="nt">build_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cargo build</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cargo test</span>
+  <span class="nt">before_cache_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rm -rf $CARGO_HOME/registry/index</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Caching Cleanup</p>
+<p>Please note <code>before_cache_script</code> that removes registry index from the cache before uploading it in the end of a successful task. 
+Registry index is <a href="https://github.com/rust-lang/crates.io-index">changing very rapidly</a> making the cache invalid. <code>before_cache_script</code>
+deletes the index and leaves only the required crates for caching.</p>
+</div>
+<h3 id="rust-nightly">Rust Nightly<a class="headerlink" href="#rust-nightly" title="Permanent link">&para;</a></h3>
+<p>It is possible to use nightly builds of Rust via an <a href="https://hub.docker.com/r/rustlang/rust/">official <code>rustlang/rust:nightly</code> container</a>. 
+Here is an example of a <code>.cirrus.yml</code> to run tests against the latest stable and nightly versions of Rust:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">test_task</span><span class="p">:</span>
+  <span class="nt">matrix</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">container</span><span class="p">:</span>
+        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rust:latest</span>
+    <span class="p p-Indicator">-</span> <span class="nt">allow_failures</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">container</span><span class="p">:</span>
+        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rustlang/rust:nightly</span>
+  <span class="nt">registry_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$CARGO_HOME/registry</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat Cargo.lock</span>
+  <span class="nt">target_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">target</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rustc --version</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat Cargo.lock</span>
+  <span class="nt">build_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cargo build</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cargo test</span>
+  <span class="nt">before_cache_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rm -rf $CARGO_HOME/registry/index</span>
+</code></pre></div>
+<details class="tip"><summary>FreeBSD Caveats</summary><p>Vanila FreeBSD VMs don't set some environment variables required by Cargo for effective caching.
+Specifying <code>HOME</code> environment variable to some arbitrarily location should fix caching:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">freebsd_instance</span><span class="p">:</span>
+  <span class="nt">image-family</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">freebsd-12-0</span>
+
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cargo test (stable)</span>
+  <span class="nt">env</span><span class="p">:</span>
+    <span class="nt">HOME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/tmp</span> <span class="c1"># cargo needs it</span>
+  <span class="nt">install_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pkg install -y rust</span>
+  <span class="nt">cargo_cache</span><span class="p">:</span>
+    <span class="nt">folder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$HOME/.cargo/registry</span>
+    <span class="nt">fingerprint_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cat Cargo.lock</span>
+  <span class="nt">build_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cargo build --all</span>
+  <span class="nt">test_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cargo test --all --all-targets</span>
+  <span class="nt">before_cache_script</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rm -rf $HOME/.cargo/registry/index</span>
+</code></pre></div>
+</details>
+<h2 id="xclogparser">XCLogParser<a class="headerlink" href="#xclogparser" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/spotify/XCLogParser">XCLogParser</a> is a CLI tool that parses Xcode and <code>xcodebuild</code>'s logs (<code>xcactivitylog</code> files) and produces reports in different formats.</p>
+<p>Here is an example of <code>.cirrus.yml</code> configuration file which will save XCLogParser's flat JSON report as an artifact, will parse it and report as <a href="https://cirrus-ci.org/guide/writing-tasks/#artifact-parsing">annotations</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">macos_instance</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">big-sur-xcode</span>
+
+<span class="nt">task</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">XCLogParser</span>
+  <span class="nt">build_script</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">xcodebuild -scheme noapp -derivedDataPath ~/dd</span>
+  <span class="nt">always</span><span class="p">:</span>
+    <span class="nt">xclogparser_parse_script</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">brew install xclogparser</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">xclogparser parse --project noapp --reporter flatJson --output xclogparser.json --derived_data ~/dd</span>
+    <span class="nt">xclogparser_upload_artifacts</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;xclogparser.json&quot;</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/json</span>
+      <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xclogparser</span>
+</code></pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" title="Back to top" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../security/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Security
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../pricing/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Pricing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            © Cirrus Labs 2017-present
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs Insiders
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/cirrus_labs" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.4c32c4e3.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c46528a6.min.js"></script>
+      
+    
+  </body>
+</html>
