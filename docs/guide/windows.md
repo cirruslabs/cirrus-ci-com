@@ -15,8 +15,8 @@ Cirrus CI will execute [scripts instructions](writing-tasks.md#script-instructio
     
 ## OS Versions
 
-By default, Cirrus CI assumes that the container image's host OS is Windows Server 2019. You can specify `os_version`
-to override it. Cirrus CI supports most versions of Windows Containers, including: `1709`, `1803` and `2019`.
+Cirrus CI assumes that the container image's host OS is Windows Server 2019.
+Cirrus CI used to support `1709` and `1803` versions, but they are deprecated as of April 2021.
 
 ```yaml
 windows_container:

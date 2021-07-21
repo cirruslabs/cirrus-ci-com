@@ -150,9 +150,5 @@ Docker builders also support building Windows Docker containers - use the `platf
 ```yaml
 docker_builder:
   platform: windows
-  os_version: 2019
   ...
 ```
-
-!!! tip "Supported OS Versions"
-    See [Windows Containers documentation](windows.md#os-versions) for a list of supported OS versions.
